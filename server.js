@@ -16,7 +16,11 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Connect to the Mongo DB
+<<<<<<< HEAD
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fidofriendDB");
+=======
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dogappDB");
+>>>>>>> 628ad35544d47ad35c5349aa67f5cae5c3a1ed67
 
 // Start the API server
 app.listen(PORT, function() {
