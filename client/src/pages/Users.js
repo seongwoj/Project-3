@@ -5,31 +5,31 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
+import { Input, FormBtn } from "../components/Form";
 
-function Books() {
+function Users() {
   // Setting our component's initial state
-  const [books, setBooks] = useState([])
+  const [users, setUsers] = useState([])
   const [formObject, setFormObject] = useState({})
 
   // Load all books and store them with setBooks
   useEffect(() => {
-    loadBooks()
+    loadUsers()
   }, [])
 
-  // Loads all books and sets them to books
-  function loadBooks() {
-    API.getBooks()
+  // Loads all users and sets them to users
+  function loadUsers() {
+    API.getUsers()
       .then(res => 
-        setBooks(res.data)
+        setUsers(res.data)
       )
       .catch(err => console.log(err));
   };
 
-  // Deletes a book from the database with a given id, then reloads books from the db
-  function deleteBook(id) {
-    API.deleteBook(id)
-      .then(res => loadBooks())
+  // Deletes a user from the database with a given id, then reloads users from the db
+  function deleteUser(id) {
+    API.deleteUser(id)
+      .then(res => loadUsers())
       .catch(err => console.log(err));
   }
 
@@ -39,17 +39,17 @@ function Books() {
     setFormObject({...formObject, [name]: value})
   };
 
-  // When the form is submitted, use the API.saveBook method to save the book data
+  // When the form is submitted, use the API.saveUser method to save the user data
   // Then reload books from the database
   function handleFormSubmit(event) {
     event.preventDefault();
-    if (formObject.title && formObject.author) {
-      API.saveBook({
-        title: formObject.title,
-        author: formObject.author,
-        synopsis: formObject.synopsis
+    if (formObject.email && formObject.password) {
+      API.saveUser({
+        email: formObject.email,
+        password: formObject.password
+
       })
-        .then(res => loadBooks())
+        .then(res => loadUsers())
         .catch(err => console.log(err));
     }
   };
@@ -64,41 +64,36 @@ function Books() {
             <form>
               <Input
                 onChange={handleInputChange}
-                name="title"
-                placeholder="Title (required)"
+                name="email"
+                placeholder="Email (required)"
               />
               <Input
                 onChange={handleInputChange}
-                name="author"
-                placeholder="Author (required)"
-              />
-              <TextArea
-                onChange={handleInputChange}
-                name="synopsis"
-                placeholder="Synopsis (Optional)"
+                name="password"
+                placeholder="Password (required)"
               />
               <FormBtn
-                disabled={!(formObject.author && formObject.title)}
+                disabled={!(formObject.email && formObject.password)}
                 onClick={handleFormSubmit}
               >
-                Submit Book
+                Submit User
               </FormBtn>
             </form>
           </Col>
           <Col size="md-6 sm-12">
             <Jumbotron>
-              <h1>Books On My List</h1>
+              <h1>Users</h1>
             </Jumbotron>
-            {books.length ? (
+            {users.length ? (
               <List>
-                {books.map(book => (
-                  <ListItem key={book._id}>
-                    <Link to={"/books/" + book._id}>
+                {users.map(user => (
+                  <ListItem key={user._id}>
+                    <Link to={"/users/" + user._id}>
                       <strong>
-                        {book.title} by {book.author}
+                        {user.email} by {user.password}
                       </strong>
                     </Link>
-                    <DeleteBtn onClick={() => deleteBook(book._id)} />
+                    <DeleteBtn onClick={() => deleteUser(user._id)} />
                   </ListItem>
                 ))}
               </List>
@@ -112,4 +107,4 @@ function Books() {
   }
 
 
-export default Books;
+export default Users;
