@@ -7,7 +7,8 @@ const keys = require("../../config/keys");
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 // Load User model
-const User = require("../../models/User");
+const User = require("../../models/user");
+const passport = require("passport");
 
 
 // Matches with "/api/users"
@@ -105,5 +106,13 @@ const email = req.body.email;
     });
   });
 });
+
+passport.serializeUser(User.serializeUser()); 
+passport.deserializeUser(User.deserializeUser()); 
+const LocalStrategy = require('passport-local').Strategy; 
+passport.use(new LocalStrategy(User.authenticate())); 
+
+// Passport config
+require("../../config/passport")(passport);
 
 module.exports = router;
