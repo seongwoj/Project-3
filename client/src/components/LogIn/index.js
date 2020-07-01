@@ -13,7 +13,7 @@ function LogIn(){
                     <h3 className="title">FidoFriend</h3>
                     <h4>Log-In</h4>
                     <div className="form-group">
-                      <input className="form-control" type="email" name="" placeholder="username"/>
+                      <input className="form-control" type="text" name="" placeholder="username"/>
                     </div>
                     <div className="form-group">
                     <input className="form-control" type="password" name="" placeholder="password"/>
@@ -21,7 +21,7 @@ function LogIn(){
                     <button className="btn signin">Login</button>
                     <br/>
                     <br/>
-                    <h5><a href="signUp.html">Create New Account <i className="fa fa-arrow-right"></i></a></h5>
+                    <h5><a href="#">Create New Account <i className="fa fa-arrow-right"></i></a></h5>
                 </form>
                 </div>
              </div>
