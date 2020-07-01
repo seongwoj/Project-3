@@ -24,7 +24,7 @@ function SignUp(){
                     <button className="btn signin">Sign Up</button>
                     <br/>
                     <br/>
-                    <h5><a href="signUp.html"><i className="fa fa-arrow-left"></i> Go Back to Log In Page </a></h5>
+                    <h5><a href="#"><i className="fa fa-arrow-left"></i> Go Back to Log In Page </a></h5>
                 </form>
                 </div>
              </div>
