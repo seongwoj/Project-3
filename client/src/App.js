@@ -10,7 +10,8 @@ import SignUp from "./components/SignUp";
 function App() {
   return (
     <Router>
-      <LogIn/>
+      <Route exact path="/login" component={LogIn}/>
+      <Route exact path="/signup" component={SignUp}/>
     </Router>
   );
 
