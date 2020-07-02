@@ -1,4 +1,5 @@
-const router = require("express").Router();
+const express = require("express");
+const router = express.Router();
 // const usersController = require("../../controllers/usersController");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");

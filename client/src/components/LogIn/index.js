@@ -43,7 +43,7 @@ class LogIn extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    console.log("success!");
+  
 
   const userData = {
     username: this.state.username,
@@ -51,7 +51,7 @@ class LogIn extends Component {
   };
 
   this.props.loginUser(userData);
-  console.log(userData);
+  // console.log(userData);
   };
 
 
