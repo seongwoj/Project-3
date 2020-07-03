@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 import API from '../../utils/API'
 import DogParksMapContainer from "../DogParksMapContainer"
-
+import "./styles.css"
 
 function DogParksMap(){
 
@@ -35,14 +35,17 @@ function DogParksMap(){
     }
 
     return(
+        <div>
+        <h1 className="header">Fido Search</h1>
         <DogParksMapContainer
-          containerElement={ <div style={{ height: `300px`, width: '100%' }} /> }
+          containerElement={ <div style={{ height: `300px`, width: '100%', marginTop:`20px` }} /> }
           mapElement={ <div style={{ height: `100%` }} /> }
           handleInputChange={handleInputChange}
           handleParkSubmit={handleParkSubmit}
           handleFriendlySubmit={handleFriendlySubmit}
           dogSearch={dogSearch}
         />
+        </div>
     )
 
 

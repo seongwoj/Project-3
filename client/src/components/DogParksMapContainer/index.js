@@ -1,16 +1,10 @@
 import React, {useState} from "react"
-
+import "./styles.css"
 
 
 import {withGoogleMap, GoogleMap, Marker, InfoWindow}from "react-google-maps"
 
 
-const imgstyle = {
-   border: '1px solid #ddd',
-   borderRadius: '4px',
-   padding: '5px',
-   width: '150px'
-  };
 
 
 const DogParksMapContainer = withGoogleMap(props => {
@@ -20,6 +14,7 @@ const DogParksMapContainer = withGoogleMap(props => {
      
       return(
          <div>
+            
       <GoogleMap
         defaultCenter = { { lat: 34.052235, lng: -118.243683 } }
         defaultZoom = { 12 }
@@ -34,6 +29,7 @@ const DogParksMapContainer = withGoogleMap(props => {
                setSelectedMap(business);
                setSelectedPlace([business])
                }
+            
             }
          />
          })}
@@ -47,7 +43,7 @@ const DogParksMapContainer = withGoogleMap(props => {
          onCloseClick={()=>{
             setSelectedMap(null)
          }}>
-            <div>
+            <div className="map-container">
                <p>{selectedMap.name}</p>
                <p>{selectedMap.location.display_address[0]} {selectedMap.location.display_address[1]} </p>
             </div>
@@ -59,23 +55,24 @@ const DogParksMapContainer = withGoogleMap(props => {
 
 
 
-      <form>
-        <input type="text" name="city" onChange={props.handleInputChange} placeholder="Enter city"></input>
-        <button onClick={props.handleParkSubmit}>Search Dog Parks</button><button onClick={props.handleFriendlySubmit}>Search Dog-Friendly-Eats</button>
+      <form className="search-form">
+        <input className="city-input" type="text" name="city" onChange={props.handleInputChange} placeholder="Enter city"></input><br/>
+        <button className="search-button" onClick={props.handleParkSubmit}>Search Dog Parks</button><button className="search-button" onClick={props.handleFriendlySubmit}>Search Dog-Friendly-Eats</button>
       </form>
         
       {selectedPlace.map(function(place){
        return <div key={place.image_url} className="row">
-            <div className="col-sm-4">
+            
                <div className="card">
                   <div className="card-body">
                      <h5 className="card-title">{place.name}</h5>
-                     <img style={imgstyle} key={place.image_url} src={place.image_url} alt={place.name}/>
-                     <p>{place.location.display_address[0]}{place.location.display_address[1]}</p>
-                     <a href={place.url} className="btn btn-primary">View On Yelp</a>
+                     <img className="placeImage" key={place.image_url} src={place.image_url} alt={place.name}/>
+                     <p>{place.location.display_address[0]} </p>
+                     <p>{place.location.display_address[1]}</p>
+                     <a href={place.url} className="btn btn-success" target="_blank">View On Yelp</a>
                   </div>
                </div>
-            </div>
+            
          </div>
    
    })}

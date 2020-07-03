@@ -42,7 +42,7 @@ class App extends Component {
   return (
     <Provider store={store}>
     <Router>
-    <Route exact path="/dogparks" component={DogParksMap}/>
+    <Route exact path="/fidosearch" component={DogParksMap}/>
       <Route exact path={['/','/login']} component={LogIn}/>
       <Route exact path="/signup" component={SignUp}/>
       
