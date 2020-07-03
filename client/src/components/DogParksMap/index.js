@@ -13,7 +13,7 @@ function DogParksMap(){
         setCity(value)
     }
 
-    function handleSubmit(event){
+    function handleParkSubmit(event){
         event.preventDefault();
         API.getDogParks(city).then((res) => {
             setDogSearch(res.data.businesses)
@@ -29,7 +29,7 @@ function DogParksMap(){
           containerElement={ <div style={{ height: `300px`, width: '100%' }} /> }
           mapElement={ <div style={{ height: `100%` }} /> }
           handleInputChange={handleInputChange}
-          handleSubmit={handleSubmit}
+          handleParkSubmit={handleParkSubmit}
           dogSearch={dogSearch}
         />
 

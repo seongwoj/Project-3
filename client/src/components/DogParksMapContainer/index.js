@@ -14,9 +14,9 @@ const imgstyle = {
 
 
 const DogParksMapContainer = withGoogleMap(props => {
-      const dogSearch=props.doSearch
-      const [selectedCenter, setSelectedCenter] = useState(null);
-      const [selectedPark, setSelectedPark] = useState([]);
+      const dogSearch=props.dogSearch
+      const [selectedMap, setSelectedMap] = useState(null);
+      const [selectedPlace, setSelectedPlace] = useState([]);
      
       return(
          <div>
@@ -24,32 +24,32 @@ const DogParksMapContainer = withGoogleMap(props => {
         defaultCenter = { { lat: 34.052235, lng: -118.243683 } }
         defaultZoom = { 12 }
       >
-      {dogSearch&&dogSearch.map(function(park){
+      {dogSearch&&dogSearch.map(function(business){
       return <Marker
-      key={park.id}
-         position={{lat: park.coordinates.latitude, 
-                  lng: park.coordinates.longitude,
+      key={business.id}
+         position={{lat: business.coordinates.latitude, 
+                  lng: business.coordinates.longitude,
             }}
             onClick={() => {
-               setSelectedCenter(park);
-               setSelectedPark([park])
+               setSelectedMap(business);
+               setSelectedPlace([business])
                }
             }
          />
          })}
 
-      {selectedCenter &&(
+      {selectedMap &&(
          <InfoWindow
-         position={{lat: selectedCenter.coordinates.latitude, 
-                     lng: selectedCenter.coordinates.longitude,
+         position={{lat: selectedMap.coordinates.latitude, 
+                     lng: selectedMap.coordinates.longitude,
                   }}
       
          onCloseClick={()=>{
-            setSelectedCenter(null)
+            setSelectedMap(null)
          }}>
             <div>
-               <p>{selectedCenter.name}</p>
-               <p>{selectedCenter.location.display_address[0]} {selectedCenter.location.display_address[1]} </p>
+               <p>{selectedMap.name}</p>
+               <p>{selectedMap.location.display_address[0]} {selectedMap.location.display_address[1]} </p>
             </div>
          </InfoWindow>
       )}
@@ -61,18 +61,18 @@ const DogParksMapContainer = withGoogleMap(props => {
 
       <form>
         <input type="text" name="city" onChange={props.handleInputChange} placeholder="Enter city"></input>
-        <button onClick={props.handleSubmit}>Search Dog Parks</button><button onClick={props.handleSubmit}>Search Dog-Friendly-Eats</button>
+        <button onClick={props.handleParkSubmit}>Search Dog Parks</button><button onClick={props.handleSubmit}>Search Dog-Friendly-Eats</button>
       </form>
         
-      {selectedPark.map(function(dogpark){
-       return <div key={dogpark.image_url} className="row">
+      {selectedPlace.map(function(place){
+       return <div key={place.image_url} className="row">
             <div className="col-sm-4">
                <div className="card">
                   <div className="card-body">
-                     <h5 className="card-title">{dogpark.name}</h5>
-                     <img style={imgstyle} key={dogpark.image_url} src={dogpark.image_url} alt={dogpark.name}/>
-                     <p>{dogpark.location.display_address[0]}{dogpark.location.display_address[1]}</p>
-                     <a href={dogpark.url} className="btn btn-primary">View On Yelp</a>
+                     <h5 className="card-title">{place.name}</h5>
+                     <img style={imgstyle} key={place.image_url} src={place.image_url} alt={place.name}/>
+                     <p>{place.location.display_address[0]}{place.location.display_address[1]}</p>
+                     <a href={place.url} className="btn btn-primary">View On Yelp</a>
                   </div>
                </div>
             </div>
