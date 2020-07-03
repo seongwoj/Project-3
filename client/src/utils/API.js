@@ -30,17 +30,33 @@ import axios from "axios";
 
 // };
 
+const URL="https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?"
+const API_key="y0lydZLqJiqXdvL0tGzYauktX0-LbHW2Q9XwdcCnhXrPHa-0Ifg5IxVoj63eyhM_uJz949jeJC2TjuWKhBG08k-NEhhTW0gsQ_Cy3mTwsyU_1nRwf39PlpIjRyD9XnYx"
+
 export default {
     // get dog parks from yelp based on city
     getDogParks: function(city) {
-      return axios.get("https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?", {
+      return axios.get(URL, {
           headers: {
-            Authorization: "Bearer y0lydZLqJiqXdvL0tGzYauktX0-LbHW2Q9XwdcCnhXrPHa-0Ifg5IxVoj63eyhM_uJz949jeJC2TjuWKhBG08k-NEhhTW0gsQ_Cy3mTwsyU_1nRwf39PlpIjRyD9XnYx"
+            Authorization: "Bearer " + API_key
+        },
+          params: {
+          term: 'dog park',
+          location: city,
+          limit:40
+        }
+        })
+    },
+    // get dog friendly businesses from yelp based on city
+    getDogFriendly: function(city) {
+      return axios.get(URL, {
+          headers: {
+            Authorization: "Bearer " + API_key
         },
           params: {
           term: 'dogs allowed',
           location: city,
-          limit:25
+          limit:40
         }
         })
     },

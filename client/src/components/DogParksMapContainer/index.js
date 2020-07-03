@@ -61,7 +61,7 @@ const DogParksMapContainer = withGoogleMap(props => {
 
       <form>
         <input type="text" name="city" onChange={props.handleInputChange} placeholder="Enter city"></input>
-        <button onClick={props.handleParkSubmit}>Search Dog Parks</button><button onClick={props.handleSubmit}>Search Dog-Friendly-Eats</button>
+        <button onClick={props.handleParkSubmit}>Search Dog Parks</button><button onClick={props.handleFriendlySubmit}>Search Dog-Friendly-Eats</button>
       </form>
         
       {selectedPlace.map(function(place){
