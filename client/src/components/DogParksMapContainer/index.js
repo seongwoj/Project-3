@@ -2,7 +2,7 @@ import React, {useState} from "react"
 import "./styles.css"
 
 
-import {withGoogleMap, GoogleMap, Marker, InfoWindow}from "react-google-maps"
+import {withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow}from "react-google-maps"
 
 
 

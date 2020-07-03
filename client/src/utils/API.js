@@ -1,5 +1,5 @@
 import axios from "axios";
-
+require('dotenv').config()
 
 // export default {
 //     // Gets all users
@@ -31,14 +31,14 @@ import axios from "axios";
 // };
 
 const URL="https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?"
-const API_key="y0lydZLqJiqXdvL0tGzYauktX0-LbHW2Q9XwdcCnhXrPHa-0Ifg5IxVoj63eyhM_uJz949jeJC2TjuWKhBG08k-NEhhTW0gsQ_Cy3mTwsyU_1nRwf39PlpIjRyD9XnYx"
 
+console.log(process.env.REACT_APP_API_KEY)
 export default {
     // get dog parks from yelp based on city
     getDogParks: function(city) {
       return axios.get(URL, {
           headers: {
-            Authorization: "Bearer " + API_key
+            Authorization: "Bearer " + process.env.REACT_APP_YELP_API_KEY
         },
           params: {
           term: 'dog park',
@@ -51,7 +51,7 @@ export default {
     getDogFriendly: function(city) {
       return axios.get(URL, {
           headers: {
-            Authorization: "Bearer " + API_key
+            Authorization: "Bearer " + process.env.API_KEY
         },
           params: {
           term: 'dogs allowed',

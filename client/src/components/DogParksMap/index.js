@@ -2,8 +2,10 @@ import React, {useState} from "react"
 import API from '../../utils/API'
 import DogParksMapContainer from "../DogParksMapContainer"
 import "./styles.css"
+require('dotenv').config()
 
 function DogParksMap(){
+    
 
     // states for city inputted and api search
     const[city, setCity]=useState("")
@@ -13,7 +15,7 @@ function DogParksMap(){
         const value=event.target.value
         setCity(value)
     }
-
+    console.log(process.env.REACT_APP_API_KEY)
     // when submit button is clicked, call API tp get dog parks or deg friendly business
     const handleParkSubmit=event=>{
         event.preventDefault();
@@ -33,7 +35,7 @@ function DogParksMap(){
             console.log (err)
             })
     }
-
+    
     return(
         <div>
         <h1 className="header">Fido Search</h1>
