@@ -5,9 +5,7 @@ import "./styles.css"
 import {withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow}from "react-google-maps"
 
 
-
-
-const DogParksMapContainer = withGoogleMap(props => {
+const DogMapContainer = withScriptjs(withGoogleMap((props => {
       const dogSearch=props.dogSearch
       const [selectedMap, setSelectedMap] = useState(null);
       const [selectedPlace, setSelectedPlace] = useState([]);
@@ -59,10 +57,11 @@ const DogParksMapContainer = withGoogleMap(props => {
         <input className="city-input" type="text" name="city" onChange={props.handleInputChange} placeholder="Enter city"></input><br/>
         <button className="search-button" onClick={props.handleParkSubmit}>Search Dog Parks</button><button className="search-button" onClick={props.handleFriendlySubmit}>Search Dog-Friendly-Eats</button>
       </form>
-        
+      
       {selectedPlace.map(function(place){
-       return <div key={place.image_url} className="row">
-            
+       return (<div>
+               <h3 className="category">{props.category}</h3>
+               <div key={place.image_url} className="row">
                <div className="card">
                   <div className="card-body">
                      <h5 className="card-title">{place.name}</h5>
@@ -72,13 +71,13 @@ const DogParksMapContainer = withGoogleMap(props => {
                      <a href={place.url} className="btn btn-success" target="_blank">View On Yelp</a>
                   </div>
                </div>
-            
-         </div>
-   
+            </div>
+            </div>
+       )
    })}
          
 </div>
    );
-})
+})))
 
-export default DogParksMapContainer;
+export default DogMapContainer;

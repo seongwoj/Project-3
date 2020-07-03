@@ -32,13 +32,12 @@ require('dotenv').config()
 
 const URL="https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?"
 
-console.log(process.env.REACT_APP_API_KEY)
 export default {
     // get dog parks from yelp based on city
     getDogParks: function(city) {
       return axios.get(URL, {
           headers: {
-            Authorization: "Bearer " + process.env.REACT_APP_YELP_API_KEY
+            Authorization: "Bearer " + process.env.REACT_APP_YELP_KEY
         },
           params: {
           term: 'dog park',
@@ -51,7 +50,7 @@ export default {
     getDogFriendly: function(city) {
       return axios.get(URL, {
           headers: {
-            Authorization: "Bearer " + process.env.API_KEY
+            Authorization: "Bearer " + process.env.REACT_APP_YELP_KEY
         },
           params: {
           term: 'dogs allowed',

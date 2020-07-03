@@ -12,10 +12,17 @@
     border-radius: 10px;
 }
 
+.category{
+    text-align: center;
+    margin-top: 20px;
+}
+
 .card{
     text-align: center;
-    margin: 60px auto;
-    width: 600px
+    margin: 20px auto;
+    width: 600px;
+    border-radius:15px
+    
 }
 
 .card-body{
