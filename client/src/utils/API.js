@@ -1,4 +1,4 @@
-// import axios from "axios";
+import axios from "axios";
 
 
 // export default {
@@ -30,3 +30,19 @@
 
 // };
 
+export default {
+    // get dog parks from yelp based on city
+    getDogParks: function(city) {
+      return axios.get("https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?", {
+          headers: {
+            Authorization: "Bearer y0lydZLqJiqXdvL0tGzYauktX0-LbHW2Q9XwdcCnhXrPHa-0Ifg5IxVoj63eyhM_uJz949jeJC2TjuWKhBG08k-NEhhTW0gsQ_Cy3mTwsyU_1nRwf39PlpIjRyD9XnYx"
+        },
+          params: {
+          term: 'dogs allowed',
+          location: city,
+          limit:25
+        }
+        })
+    },
+    
+  };

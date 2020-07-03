@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import "./styles.css";
 import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { signupUser } from "../../actions/authActions";
-import "../SignUp/style.css";
+
 // import { connect } from "mongoose";
 import classnames from "classnames";
 
