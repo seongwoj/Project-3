@@ -34,7 +34,9 @@ return (
             </button>
           </div>
         </div>
+        <a href="/fidosearch" class="btn btn-primary">Find Dog Friendly Places</a>
       </div>
+      
     );
   }
 }

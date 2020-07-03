@@ -13,6 +13,8 @@ import LogIn from "./components/LogIn";
 import SignUp from "./components/SignUp";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
+import DogMap from "./components/DogMap"
+
 
 //Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -40,8 +42,10 @@ class App extends Component {
   return (
     <Provider store={store}>
     <Router>
+    <Route exact path="/fidosearch" component={DogMap}/>
       <Route exact path={['/','/login']} component={LogIn}/>
       <Route exact path="/signup" component={SignUp}/>
+      
       <Switch>
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
       </Switch>
