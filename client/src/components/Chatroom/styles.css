@@ -1,0 +1,22 @@
+.connected-user{
+    display: inline-block
+}
+
+.btn-chat{
+    padding: 1px 4px;
+    font-size: 12px;
+    margin-left: 10px;
+    background-color: blue;
+}
+
+.online-users{
+    width: 300px
+}
+
+#send-button{
+    margin-left: 10px
+}
+
+#message-input{
+    width: 380px
+}

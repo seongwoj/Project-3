@@ -59,13 +59,13 @@ const DogMapContainer = withScriptjs(withGoogleMap((props => {
       </form>
       
       {selectedPlace.map(function(place){
-       return (<div>
+       return (<div key={place.id}>
                <h3 className="category">{props.category}</h3>
-               <div key={place.image_url} className="row">
-               <div className="card">
-                  <div className="card-body">
+               <div className="row">
+               <div className="card business-card">
+                  <div className="card-body business-body">
                      <h5 className="card-title">{place.name}</h5>
-                     <img className="placeImage" key={place.image_url} src={place.image_url} alt={place.name}/>
+                     <img className="placeImage" src={place.image_url} alt={place.name}/>
                      <p>{place.location.display_address[0]} </p>
                      <p>{place.location.display_address[1]}</p>
                      <a href={place.url} className="btn btn-success" target="_blank">View On Yelp</a>
