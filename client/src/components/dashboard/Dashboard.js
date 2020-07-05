@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+import Search from "../../components/search"
 class Dashboard extends Component {
   onLogoutClick = e => {
     e.preventDefault();
@@ -34,7 +35,8 @@ return (
             </button>
           </div>
         </div>
-        <a href="/fidosearch" class="btn btn-primary">Find Dog Friendly Places</a>
+        <a href="/fidosearch" className="btn btn-primary">Find Dog Friendly Places</a>
+        <Search />
       </div>
       
     );
