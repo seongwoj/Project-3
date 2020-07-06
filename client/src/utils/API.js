@@ -25,7 +25,7 @@ export default {
             Authorization: "Bearer " + process.env.REACT_APP_YELP_KEY
         },
           params: {
-          term: 'dogs allowed',
+          term: 'dog allowed',
           location: city,
           limit:40
         }

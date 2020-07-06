@@ -11,7 +11,7 @@ const DogMapContainer = withScriptjs(withGoogleMap((props => {
       const [selectedPlace, setSelectedPlace] = useState([]);
      
       return(
-         <div>
+         <div className="dog-map-container">
             
       <GoogleMap
         defaultCenter = { { lat: 34.052235, lng: -118.243683 } }
@@ -55,7 +55,7 @@ const DogMapContainer = withScriptjs(withGoogleMap((props => {
 
       <form className="search-form">
         <input className="city-input" type="text" name="city" onChange={props.handleInputChange} placeholder="Enter city"></input><br/>
-        <button className="search-button" onClick={props.handleParkSubmit}>Search Dog Parks</button><button className="search-button" onClick={props.handleFriendlySubmit}>Search Dog-Friendly-Eats</button>
+        <button className="search-button" onClick={props.handleParkSubmit}>Fetch Dog Parks</button><button className="search-button" onClick={props.handleFriendlySubmit}>Fetch Dog Friendly Places</button>
       </form>
       
       {selectedPlace.map(function(place){
@@ -68,7 +68,7 @@ const DogMapContainer = withScriptjs(withGoogleMap((props => {
                      <img className="placeImage" src={place.image_url} alt={place.name}/>
                      <p>{place.location.display_address[0]} </p>
                      <p>{place.location.display_address[1]}</p>
-                     <a href={place.url} className="btn btn-success" rel="noopener noreferrer">View On Yelp</a>
+                     <a href={place.url} className="btn view-yelp" rel="noopener noreferrer">View On Yelp</a>
                   </div>
                </div>
             </div>
