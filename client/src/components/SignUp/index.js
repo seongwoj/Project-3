@@ -15,8 +15,14 @@ class SignUp extends Component {
           username: "",
           email: "",
           password:"",
-          errors: {}
+          errors: {},
+          latitude: null,
+          longitude: null,
+          userAddress: null
       };
+      this.getLocation = this.getLocation.bind(this);
+      this.getCoordinates = this.getCoordinates.bind(this);
+      this.reverseGeocodeCoordinates = this.reverseGeocodeCoordinates.bind(this);
   }
 componentDidMount() {
   //If logged in and user navigates to SignUp, should redirect to dashboard
@@ -50,7 +56,48 @@ this.props.signupUser(newUser, this.props.history);
 console.log(newUser);
 };
 
+getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(this.getCoordinates, this.handleLocationError);
+  } else {
+    alert("Geolocation is not supported by this browser.");
+  }
+}
 
+getCoordinates(position) {
+  console.log(position.coords)
+  this.setState({
+    latitude: position.coords.latitude,
+    longitude: position.coords.longitude
+  })
+  this.reverseGeocodeCoordinates();
+}
+
+reverseGeocodeCoordinates() {
+  fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.latitude},${this.state.longitude}&sensor=false&key=AIzaSyBsyx-Kp0OomdOCTi7lowN87T6FGcv4CKM`)
+  .then(response => response.json())
+  .then(data => this.setState({
+    userAddress: data.results[5].formatted_address
+  }))
+  .catch(error => alert(error))
+}
+
+handleLocationError(error) {
+  switch(error.code) {
+    case error.PERMISSION_DENIED:
+      alert("User denied the request for Geolocation.")
+      break;
+    case error.POSITION_UNAVAILABLE:
+      alert("Location information is unavailable.")
+      break;
+    case error.TIMEOUT:
+      alert("The request to get user location timed out.")
+      break;
+    case error.UNKNOWN_ERROR:
+      alert("An unknown error occurred.")
+      break;
+  }
+}
 
 render() {
   const { errors } = this.state;
@@ -65,17 +112,21 @@ render() {
                     <h3 className="title">FidoFriend</h3>
                     <h4>Sign-Up</h4>
                     <div className="form-group">
-                      <input className={classnames("", { invalid: errors.username})} type="text" name="" placeholder="username" onChange={this.onChange} value={this.state.username} error={errors.username} id="username"/>
+                      <input className={classnames("", { invalid: errors.username})} type="text" name="" placeholder="Username" onChange={this.onChange} value={this.state.username} error={errors.username} id="username"/>
                       <span className="red-text">{errors.username}</span>
                     </div>
                     <div className="form-group">
-                      <input className={classnames("", { invalid: errors.email })} type="email" name="" placeholder="email" onChange={this.onChange} value={this.state.email} error={errors.email} id="email"/>
+                      <input className={classnames("", { invalid: errors.email })} type="email" name="" placeholder="Email" onChange={this.onChange} value={this.state.email} error={errors.email} id="email"/>
                     <span className="red-text">{errors.email}</span>
                     </div>
                     <div className="form-group">
-                    <input className={classnames("", { invalid: errors.password })} type="password" name="" placeholder="password" onChange={this.onChange} value={this.state.password} error={errors.password} id="password"/>
-                    <span className="red-text">{errors.email}</span>
+                    <input className={classnames("", { invalid: errors.password })} type="password" name="" placeholder="Password" onChange={this.onChange} value={this.state.password} error={errors.password} id="password"/>
+                    <span className="red-text">{errors.password}</span>
                     </div>
+                    <button onClick={this.getLocation} className="btn">Get My Location</button>
+                    <h5>Address: {this.state.userAddress}</h5>
+                    <br/>
+                    <br/>
                     <button className="btn signin">Sign Up</button>
                     <br/>
                     <br/>
