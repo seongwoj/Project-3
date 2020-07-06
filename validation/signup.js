@@ -10,7 +10,7 @@ module.exports = function validateSignUpInput(data) {
 
 // Location checks
   if (Validator.isEmpty(data.address)) {
-    errors.address = "In order to proceed, please press Get My Location button and confirm that the above inputs are populated";
+    errors.address = "In order to proceed, please press Get My Location button and confirm that the above location inputs are populated";
   }
 // Name checks
   if (Validator.isEmpty(data.username)) {
