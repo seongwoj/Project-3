@@ -9,12 +9,12 @@ const DogMapContainer = withScriptjs(withGoogleMap((props => {
       const dogSearch=props.dogSearch
       const [selectedMap, setSelectedMap] = useState(null);
       const [selectedPlace, setSelectedPlace] = useState([]);
-     
+      console.log(props.coords.lat)
       return(
          <div className="dog-map-container">
             
       <GoogleMap
-        defaultCenter = { { lat: 34.052235, lng: -118.243683 } }
+        defaultCenter = { { lat: props.coords.lat, lng: props.coords.lng} }
         defaultZoom = { 12 }
       >
       {dogSearch&&dogSearch.map(function(business){

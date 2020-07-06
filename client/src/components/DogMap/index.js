@@ -11,7 +11,11 @@ function DogMap(){
     const[city, setCity]=useState("")
     const[dogSearch, setDogSearch]=useState([])
     const[category, setCategory]=useState("")
-    
+    const[coords, setCoords]=useState({ lat: 34.052235, lng: -118.243683 })
+
+
+
+
     const handleInputChange=event=>{
         const value=event.target.value
         setCity(value)
@@ -20,14 +24,22 @@ function DogMap(){
     // when submit button is clicked, call API tp get dog parks or deg friendly business
     const handleParkSubmit=event=>{
         event.preventDefault();
-        API.getDogParks(city).then((res) => {
-            setDogSearch(res.data.businesses)
-            setCategory("Dog Park")
+        API.getCityCoords(city).then((res)=>{
+            setCoords({
+                lat: res.data.results[0].locations[0].latLng.lat,
+                long: res.data.results[0].locations[0].latLng.lng
             })
-            .catch((err) => {
-            console.log (err)
-            })
+            API.getDogParks(city).then((res) => {
+                setDogSearch(res.data.businesses)
+                setCategory("Dog Park")
+                })
+                .catch((err) => {
+                console.log (err)
+                })
+        })
+        
     }
+    console.log(coords)
     const handleFriendlySubmit=event=>{
         event.preventDefault();
         API.getDogFriendly(city).then((res) => {
@@ -78,6 +90,7 @@ function DogMap(){
           handleDogBeachSubmit={handleDogBeachSubmit}
           dogSearch={dogSearch}
           category={category}
+          coords={coords}
         />
         </div>
     )
