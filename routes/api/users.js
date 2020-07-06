@@ -27,7 +27,10 @@ User.findOne({ email: req.body.email }).then(user => {
       const newUser = new User({
         username: req.body.username,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        latitude: req.body.latitude,
+        longitude: req.body.longitude,
+        address: req.body.address
       });
 // Hash password before saving in database
       bcrypt.genSalt(10, (err, salt) => {

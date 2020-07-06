@@ -6,7 +6,12 @@ module.exports = function validateSignUpInput(data) {
   data.username = !isEmpty(data.username) ? data.username : "";
   data.email = !isEmpty(data.email) ? data.email : "";
   data.password = !isEmpty(data.password) ? data.password : "";
- 
+  data.address = !isEmpty(data.address) ? data.address : "";
+
+// Location checks
+  if (Validator.isEmpty(data.address)) {
+    errors.address = "In order to proceed, please press Get My Location button and confirm that the above inputs are populated";
+  }
 // Name checks
   if (Validator.isEmpty(data.username)) {
     errors.username = "Name field is required";
@@ -21,9 +26,9 @@ module.exports = function validateSignUpInput(data) {
   if (Validator.isEmpty(data.password)) {
     errors.password = "Password field is required";
   }
-if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
+  if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
     errors.password = "Password must be at least 6 characters";
-  } 
+  }
 return {
     errors,
     isValid: isEmpty(errors)
