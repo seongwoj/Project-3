@@ -38,6 +38,17 @@ function DogMap(){
             console.log (err)
             })
     }
+
+    const handleDogBeachSubmit=event=>{
+        event.preventDefault();
+        API.getDogBeaches(city).then((res) => {
+            setDogSearch(res.data.businesses)
+            setCategory("Dog Beaches")
+            })
+            .catch((err) => {
+            console.log (err)
+            })
+    }
     
     // google map styling and props for submit buttons and state
     return(
@@ -64,6 +75,7 @@ function DogMap(){
           handleInputChange={handleInputChange}
           handleParkSubmit={handleParkSubmit}
           handleFriendlySubmit={handleFriendlySubmit}
+          handleDogBeachSubmit={handleDogBeachSubmit}
           dogSearch={dogSearch}
           category={category}
         />
