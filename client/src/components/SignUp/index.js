@@ -16,14 +16,15 @@ class SignUp extends Component {
           email: "",
           password:"",
           errors: {},
-          latitude: null,
-          longitude: null,
-          userAddress: null
+          latitude: "",
+          longitude: "",
+          userAddress: ""
       };
       this.getLocation = this.getLocation.bind(this);
       this.getCoordinates = this.getCoordinates.bind(this);
       this.reverseGeocodeCoordinates = this.reverseGeocodeCoordinates.bind(this);
   }
+
 componentDidMount() {
   //If logged in and user navigates to SignUp, should redirect to dashboard
   if (this.props.auth.isAuthenticated) {
@@ -50,7 +51,9 @@ const newUser = {
   username: this.state.username,
   email: this.state.email,
   password: this.state.password,
-  
+  latitude: this.state.latitude,
+  longitude: this.state.longitude,
+  address: this.state.userAddress,
 };
 this.props.signupUser(newUser, this.props.history);
 console.log(newUser);
@@ -65,7 +68,6 @@ getLocation() {
 }
 
 getCoordinates(position) {
-  console.log(position.coords)
   this.setState({
     latitude: position.coords.latitude,
     longitude: position.coords.longitude
@@ -74,7 +76,7 @@ getCoordinates(position) {
 }
 
 reverseGeocodeCoordinates() {
-  fetch(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.latitude},${this.state.longitude}&sensor=false&key=` + process.env.REACT_APP_GOOLE_KEY2)
+  fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.latitude},${this.state.longitude}&sensor=false&key=` + process.env.REACT_APP_GOOLE_KEY2)
   .then(response => response.json())
   .then(data => this.setState({
     userAddress: data.results[5].formatted_address
@@ -134,7 +136,7 @@ render() {
                     <input type="longitude" name="" placeholder="Longitude" value={this.state.longitude} id="longitude" readOnly= {true}/>
                     </div>
                     <div className="form-group">
-                    <input className={classnames("", { invalid: errors.address })} type="address" name="" placeholder="Address" value={this.state.userAddress} error={errors.address} id="address" readOnly= {true}/>
+                    <input className={classnames("", { invalid: errors.address })}  type="address" name="" placeholder="Address" value={this.state.userAddress} error={errors.password} id="address" readOnly= {true}/>
                     <span className="red-text"><br/>{errors.address}</span>
                     </div>
                     <br/>
