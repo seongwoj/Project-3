@@ -3,11 +3,17 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import Search from "../../components/search"
+import Chatroom from "../Chatroom"
+
+
+
 class Dashboard extends Component {
   onLogoutClick = e => {
     e.preventDefault();
     this.props.logoutUser();
   };
+
+  
 render() {
     const { user } = this.props.auth;
 return (
@@ -35,8 +41,13 @@ return (
             </button>
           </div>
         </div>
+
         <a href="/fidosearch" className="btn btn-primary">Find Dog Friendly Places</a>
+
         <Search />
+
+            <Chatroom username={this.props.auth.user.username}/>
+
       </div>
       
     );

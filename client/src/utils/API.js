@@ -2,9 +2,6 @@ import axios from "axios";
 require('dotenv').config()
 
 
-
-
-
 const URL="https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?"
 
 export default {
@@ -28,7 +25,7 @@ export default {
             Authorization: "Bearer " + process.env.REACT_APP_YELP_KEY
         },
           params: {
-          term: 'dogs allowed',
+          term: 'dog allowed',
           location: city,
           limit:40
         }
