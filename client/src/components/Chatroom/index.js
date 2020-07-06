@@ -7,13 +7,12 @@ import "./styles.css"
 let socket;
 
 function Chatroom(props){
-  console.log(props)
   const [message, setMessage] = useState("")
   const [chat, setChat] = useState([])
   const [users, setUsers]=useState([])
 
   useEffect(() =>{
-    socket = io.connect('http://localhost:3000')
+    socket = io.connect()
     const name=props.username
     socket.on('connect',()=>{
     socket.emit('new-user',name);
@@ -40,10 +39,7 @@ function Chatroom(props){
       });
     });
     
-    // socket.on("disconnected-message", function(){
-    //   setMessage("userdisconnected")
-      
-    // })
+    return () => socket.close();
 
   },[])
    

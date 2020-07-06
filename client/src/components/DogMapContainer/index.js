@@ -68,7 +68,7 @@ const DogMapContainer = withScriptjs(withGoogleMap((props => {
                      <img className="placeImage" src={place.image_url} alt={place.name}/>
                      <p>{place.location.display_address[0]} </p>
                      <p>{place.location.display_address[1]}</p>
-                     <a href={place.url} className="btn btn-success" target="_blank">View On Yelp</a>
+                     <a href={place.url} className="btn btn-success" rel="noopener noreferrer">View On Yelp</a>
                   </div>
                </div>
             </div>

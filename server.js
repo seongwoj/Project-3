@@ -38,9 +38,8 @@ app.use("/api/users", users);
 const port = process.env.PORT || 3001;
 const server=app.listen(port, () => console.log(`Server up and running on port ${port} !`));
 
+// chatroom setup
 var io=socket(server)
-
-
 const userslist={}
 
 io.on('connection',function(socket){
@@ -55,7 +54,6 @@ io.on('connection',function(socket){
     io.emit("users", Object.values(userslist));
   })
 
-  
   socket.on('message', message => {
     io.emit('render-message', {message:message, name:userslist[socket.id]
     });
@@ -65,8 +63,5 @@ io.on('connection',function(socket){
   socket.on("disconnect", () => {
     delete userslist[socket.id];
     io.emit("disconnected",socket.id)
-    // io.emit("disconnected-message")
   });
-  
-
 })

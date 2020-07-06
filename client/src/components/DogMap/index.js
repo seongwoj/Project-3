@@ -42,7 +42,20 @@ function DogMap(){
     // google map styling and props for submit buttons and state
     return(
         <div>
-        <h1 className="header">Fido Search</h1>
+        <nav className="navbar navbar-default navbar-fidosearch">
+            <div className="container-fluid">
+                <div className="navbar-header">
+                    <a className="navbar-brand logo-text" href="/fidosearch">
+                    Fido Search
+                    </a>
+                </div>
+                <div className="navbar-header ml-auto">
+                    <a className="navbar-brand back-text" href="/dashboard">
+                    Back to Main Page
+                    </a>
+                </div>
+            </div>
+        </nav>
         <DogMapContainer
           googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_KEY}`}
           loadingElement={<div style={{ height: `100%` }} />}

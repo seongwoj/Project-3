@@ -2,9 +2,6 @@ import axios from "axios";
 require('dotenv').config()
 
 
-
-
-
 const URL="https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?"
 
 export default {
