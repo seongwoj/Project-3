@@ -35,4 +35,18 @@ export default {
         })
     },
     
+    getDogBeaches: function(city) {
+      return axios.get(URL, {
+          headers: {
+            Authorization: "Bearer " + process.env.REACT_APP_YELP_KEY
+        },
+          params: {
+          term: 'dog beaches',
+          location: city,
+          limit:40
+        }
+        })
+    },
+
+
   };
