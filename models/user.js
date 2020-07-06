@@ -18,7 +18,7 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-  longitiude: {
+  longitude: {
     type: String,
     required: true
   },
