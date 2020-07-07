@@ -16,14 +16,17 @@ class SignUp extends Component {
           email: "",
           password:"",
           errors: {},
-          latitude: null,
-          longitude: null,
-          userAddress: null
+          latitude: "",
+          longitude: "",
+          userAddress: "",
+          icon: ""
+
       };
       this.getLocation = this.getLocation.bind(this);
       this.getCoordinates = this.getCoordinates.bind(this);
       this.reverseGeocodeCoordinates = this.reverseGeocodeCoordinates.bind(this);
   }
+
 componentDidMount() {
   //If logged in and user navigates to SignUp, should redirect to dashboard
   if (this.props.auth.isAuthenticated) {
@@ -50,7 +53,10 @@ const newUser = {
   username: this.state.username,
   email: this.state.email,
   password: this.state.password,
-  
+  latitude: this.state.latitude,
+  longitude: this.state.longitude,
+  address: this.state.userAddress,
+  icon: this.state.icon
 };
 this.props.signupUser(newUser, this.props.history);
 console.log(newUser);
@@ -65,7 +71,6 @@ getLocation() {
 }
 
 getCoordinates(position) {
-  console.log(position.coords)
   this.setState({
     latitude: position.coords.latitude,
     longitude: position.coords.longitude
@@ -74,7 +79,7 @@ getCoordinates(position) {
 }
 
 reverseGeocodeCoordinates() {
-  fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.latitude},${this.state.longitude}&sensor=false&key=AIzaSyBsyx-Kp0OomdOCTi7lowN87T6FGcv4CKM`)
+  fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.latitude},${this.state.longitude}&sensor=false&key=` + process.env.REACT_APP_GOOLE_KEY2)
   .then(response => response.json())
   .then(data => this.setState({
     userAddress: data.results[5].formatted_address
@@ -113,18 +118,34 @@ render() {
                     <h4>Sign-Up</h4>
                     <div className="form-group">
                       <input className={classnames("", { invalid: errors.username})} type="text" name="" placeholder="Username" onChange={this.onChange} value={this.state.username} error={errors.username} id="username"/>
-                      <span className="red-text">{errors.username}</span>
+                      <span className="red-text"><br/>{errors.username}</span>
                     </div>
                     <div className="form-group">
                       <input className={classnames("", { invalid: errors.email })} type="email" name="" placeholder="Email" onChange={this.onChange} value={this.state.email} error={errors.email} id="email"/>
-                    <span className="red-text">{errors.email}</span>
+                    <span className="red-text"><br/>{errors.email}</span>
                     </div>
                     <div className="form-group">
                     <input className={classnames("", { invalid: errors.password })} type="password" name="" placeholder="Password" onChange={this.onChange} value={this.state.password} error={errors.password} id="password"/>
-                    <span className="red-text">{errors.password}</span>
+                    <span className="red-text"><br/>{errors.password}</span>
                     </div>
-                    <button onClick={this.getLocation} className="btn">Get My Location</button>
-                    <h5>Address: {this.state.userAddress}</h5>
+                    <div className="form-group">
+                    <input className={classnames("", { invalid: errors.icon })} type="icon" name="" placeholder="Favorite Dog Breed" onChange={this.onChange} value={this.state.icon} error={errors.icon} id="icon"/>
+                    <span className="red-text"><br/>{errors.icon}</span>
+                    </div>
+                    <br/>
+                    <div>
+                    <button onClick={this.getLocation} className="btn" id="locationBtn">Get My Location</button>
+                    </div>
+                    <div className="form-group">
+                    <input type="latitude" name="" placeholder="Latitude" value={this.state.latitude} id="latitude" readOnly= {true}/>
+                    </div>
+                    <div className="form-group">
+                    <input type="longitude" name="" placeholder="Longitude" value={this.state.longitude} id="longitude" readOnly= {true}/>
+                    </div>
+                    <div className="form-group">
+                    <input className={classnames("", { invalid: errors.address })}  type="address" name="" placeholder="Address" value={this.state.userAddress} error={errors.password} id="address" readOnly= {true}/>
+                    <span className="red-text"><br/>{errors.address}</span>
+                    </div>
                     <br/>
                     <br/>
                     <button className="btn signin">Sign Up</button>

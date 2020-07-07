@@ -9,12 +9,12 @@ const DogMapContainer = withScriptjs(withGoogleMap((props => {
       const dogSearch=props.dogSearch
       const [selectedMap, setSelectedMap] = useState(null);
       const [selectedPlace, setSelectedPlace] = useState([]);
-     
+      
       return(
-         <div>
+         <div className="dog-map-container">
             
       <GoogleMap
-        defaultCenter = { { lat: 34.052235, lng: -118.243683 } }
+        center = { { lat: props.coords.lat, lng: props.coords.lng} }
         defaultZoom = { 12 }
       >
       {dogSearch&&dogSearch.map(function(business){
@@ -54,21 +54,22 @@ const DogMapContainer = withScriptjs(withGoogleMap((props => {
 
 
       <form className="search-form">
-        <input className="city-input" type="text" name="city" onChange={props.handleInputChange} placeholder="Enter city"></input><br/>
-        <button className="search-button" onClick={props.handleParkSubmit}>Search Dog Parks</button><button className="search-button" onClick={props.handleFriendlySubmit}>Search Dog-Friendly-Eats</button>
+        <input className="city-input" type="text" name="city" onChange={props.handleInputChange} placeholder="Enter city"></input>
+        <button className="search-button" onClick={props.handleParkSubmit}>Fetch Dog Parks</button><button className="search-button" onClick={props.handleFriendlySubmit}>Fetch Dog Friendly Places</button>
+        <button className="search-button" onClick={props.handleDogBeachSubmit}>Fetch Dog Beaches</button>
       </form>
       
       {selectedPlace.map(function(place){
-       return (<div>
+       return (<div key={place.id}>
                <h3 className="category">{props.category}</h3>
-               <div key={place.image_url} className="row">
-               <div className="card">
-                  <div className="card-body">
+               <div className="row">
+               <div className="card business-card">
+                  <div className="card-body business-body">
                      <h5 className="card-title">{place.name}</h5>
-                     <img className="placeImage" key={place.image_url} src={place.image_url} alt={place.name}/>
+                     <img className="placeImage" src={place.image_url} alt={place.name}/>
                      <p>{place.location.display_address[0]} </p>
                      <p>{place.location.display_address[1]}</p>
-                     <a href={place.url} className="btn btn-success" target="_blank">View On Yelp</a>
+                     <a href={place.url} className="btn view-yelp" rel="noopener noreferrer">View On Yelp</a>
                   </div>
                </div>
             </div>

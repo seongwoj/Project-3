@@ -8,6 +8,7 @@
     font-family: 'Nunito', sans-serif;
     background-image: url(https://cdn.pixabay.com/photo/2016/11/21/12/31/dogs-1845077_1280.jpg);
     background-size: cover;
+    
   }
 
   /* .cont{
@@ -22,6 +23,7 @@
       font-size: 60px;
       
   }
+  
 
   .title{
       text-align: center;
@@ -49,7 +51,7 @@
 
   .btn {
       /* background:linear-gradient(to right,#b92b27, #1565c0); */
-      background-color: #1565c0;
+      background-color: #8E2DE2;
       color: white;
   }
   
@@ -68,4 +70,10 @@
     font-family: 'Monoton', cursive;
     color: #8E2DE2;
     font-weight: 600;
+ }
+
+ #locationBtn {
+    margin-bottom: 10px;
+    background-color: crimson;
+    font-size: small;
  }

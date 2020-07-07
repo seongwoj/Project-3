@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const users = require("./routes/api/users");
+var socket=require('socket.io');
+const { use } = require("passport");
 const app = express();
 
 
@@ -35,6 +37,32 @@ require("./config/passport")(passport);
 // Routes
 app.use("/api/users", users);
 const port = process.env.PORT || 3001;
-app.listen(port, () => console.log(`Server up and running on port ${port} !`));
+const server=app.listen(port, () => console.log(`Server up and running on port ${port} !`));
 
+// chatroom setup
+var io=socket(server)
+const userslist={}
 
+io.on('connection',function(socket){
+  socket.on('new-user', function(name){
+    
+    const user={
+      username: name,
+      id:socket.id
+    }
+    userslist[socket.id]=user
+    io.emit("user-connected", user)
+    io.emit("users", Object.values(userslist));
+  })
+
+  socket.on('message', message => {
+    io.emit('render-message', {message:message, name:userslist[socket.id]
+    });
+  });
+
+ 
+  socket.on("disconnect", () => {
+    delete userslist[socket.id];
+    io.emit("disconnected",socket.id)
+  });
+})
