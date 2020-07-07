@@ -40,7 +40,8 @@ User.findOne({ email: req.body.email }).then(user => {
         latitude: req.body.latitude,
         longitude: req.body.longitude,
         address: req.body.address,
-        icon: req.body.icon
+        icon: req.body.icon,
+        url: req.body.url
       });
 // Hash password before saving in database
       bcrypt.genSalt(10, (err, salt) => {
@@ -86,7 +87,8 @@ const username = req.body.username;
           address: user.address,
           icon: user.icon,
           latitude: user.latitude,
-          longitude: user.longitude
+          longitude: user.longitude,
+          url: user.url
         };
 // Sign token
         jwt.sign(
