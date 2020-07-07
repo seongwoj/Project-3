@@ -104,7 +104,7 @@ getDogsofBreed(){
 
 
 reverseGeocodeCoordinates() {
-  fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.latitude},${this.state.longitude}&sensor=false&key=` + process.env.REACT_APP_GOOLE_KEY2)
+  fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.latitude},${this.state.longitude}&sensor=false&key=` + process.env.REACT_APP_GOOGLE_KEY2)
   .then(response => response.json())
   .then(data => this.setState({
     userAddress: data.results[5].formatted_address
