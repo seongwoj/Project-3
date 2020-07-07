@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import UserMap from "../UserMap"
-import Chatroom from "../Chatroom"
+
 
 
 
@@ -53,7 +53,7 @@ return (
 
         <UserMap />
         
-        <img alt="Dog" src={this.props.auth.user.url} className="img-fluid" />
+       
 
 
       
