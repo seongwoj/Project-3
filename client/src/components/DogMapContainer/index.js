@@ -9,7 +9,7 @@ const DogMapContainer = withScriptjs(withGoogleMap((props => {
       const dogSearch=props.dogSearch
       const [selectedMap, setSelectedMap] = useState(null);
       const [selectedPlace, setSelectedPlace] = useState([]);
-      
+      console.log(props.location)
       return(
          <div className="dog-map-container">
             
@@ -52,9 +52,8 @@ const DogMapContainer = withScriptjs(withGoogleMap((props => {
 
 
 
-
       <form className="search-form">
-        <input className="city-input" type="text" name="city" onChange={props.handleInputChange} placeholder="Enter city"></input>
+        <input className="city-input" type="text" name="city" onChange={props.handleInputChange} placeholder="Enter city here first before searching"></input>
         <button className="search-button" onClick={props.handleParkSubmit}>Fetch Dog Parks</button><button className="search-button" onClick={props.handleFriendlySubmit}>Fetch Dog Friendly Places</button>
         <button className="search-button" onClick={props.handleDogBeachSubmit}>Fetch Dog Beaches</button>
       </form>
