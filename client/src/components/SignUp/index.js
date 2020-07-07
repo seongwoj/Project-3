@@ -18,7 +18,9 @@ class SignUp extends Component {
           errors: {},
           latitude: "",
           longitude: "",
-          userAddress: ""
+          userAddress: "",
+          icon: ""
+
       };
       this.getLocation = this.getLocation.bind(this);
       this.getCoordinates = this.getCoordinates.bind(this);
@@ -54,6 +56,7 @@ const newUser = {
   latitude: this.state.latitude,
   longitude: this.state.longitude,
   address: this.state.userAddress,
+  icon: this.state.icon
 };
 this.props.signupUser(newUser, this.props.history);
 console.log(newUser);
@@ -124,6 +127,10 @@ render() {
                     <div className="form-group">
                     <input className={classnames("", { invalid: errors.password })} type="password" name="" placeholder="Password" onChange={this.onChange} value={this.state.password} error={errors.password} id="password"/>
                     <span className="red-text"><br/>{errors.password}</span>
+                    </div>
+                    <div className="form-group">
+                    <input className={classnames("", { invalid: errors.icon })} type="icon" name="" placeholder="Favorite Dog Breed" onChange={this.onChange} value={this.state.icon} error={errors.icon} id="icon"/>
+                    <span className="red-text"><br/>{errors.icon}</span>
                     </div>
                     <br/>
                     <div>

@@ -39,7 +39,8 @@ User.findOne({ email: req.body.email }).then(user => {
         password: req.body.password,
         latitude: req.body.latitude,
         longitude: req.body.longitude,
-        address: req.body.address
+        address: req.body.address,
+        icon: req.body.icon
       });
 // Hash password before saving in database
       bcrypt.genSalt(10, (err, salt) => {
@@ -81,7 +82,11 @@ const username = req.body.username;
         // Create JWT Payload
         const payload = {
           id: user.id,
-          username: user.username
+          username: user.username,
+          address: user.address,
+          icon: user.icon,
+          latitude: user.latitude,
+          longitude: user.longitude
         };
 // Sign token
         jwt.sign(

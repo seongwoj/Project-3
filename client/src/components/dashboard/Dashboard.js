@@ -16,6 +16,9 @@ class Dashboard extends Component {
 
   
 render() {
+  console.log(this.props.auth.user.latitude)
+  console.log(this.props.auth.user.longitude)
+  console.log(this.props.auth.user.address)
     const { user } = this.props.auth;
     
 return (
