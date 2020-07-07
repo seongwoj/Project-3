@@ -22,7 +22,7 @@ return(
             <div className="container-fluid">
                 <div className="navbar-header">
                     <a className="navbar-brand logo-text" href="/fidosearch">
-                    User Search
+                    Dog Owners Near You
                     </a>
                 </div>
                 <div className="navbar-header ml-auto">
@@ -43,6 +43,7 @@ return(
     />
     
     <Chatroom username={props.auth.user.username}/>
+    <a href="/fidosearch" className="btn btn-primary">Find Dog Friendly Places</a>
     </div>
 )
 

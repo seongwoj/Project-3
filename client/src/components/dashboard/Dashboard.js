@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import Search from "../../components/search"
-import Chatroom from "../Chatroom"
+import UserMap from "../UserMap"
 
 
 
@@ -47,11 +47,12 @@ return (
           </div>
         </div>
 
-        <a href="/fidosearch" className="btn btn-primary">Find Dog Friendly Places</a>
-        <a href="/usersearch" className="btn btn-primary">Find Dog Friends</a>
+        
+        
 
+        
+        <UserMap />
         <Search />
-
       
        
       </div>
