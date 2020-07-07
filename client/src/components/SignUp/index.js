@@ -4,6 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { signupUser } from "../../actions/authActions";
+// import SearchResults from "../SearchResults/index"
 
 // import { connect } from "mongoose";
 import classnames from "classnames";
@@ -19,18 +20,20 @@ class SignUp extends Component {
           latitude: "",
           longitude: "",
           userAddress: "",
-          icon: ""
+          icon: "",
+          url: ""
 
       };
       this.getLocation = this.getLocation.bind(this);
       this.getCoordinates = this.getCoordinates.bind(this);
       this.reverseGeocodeCoordinates = this.reverseGeocodeCoordinates.bind(this);
+      this.getDogsofBreed = this.getDogsofBreed.bind(this);
   }
 
 componentDidMount() {
   //If logged in and user navigates to SignUp, should redirect to dashboard
   if (this.props.auth.isAuthenticated) {
-    this.props.history.push("/dashboard");
+    this.props.history.push("/main");
   }
 }
 
@@ -48,6 +51,7 @@ onChange = e => {
 
 onSubmit = e => {
   e.preventDefault();
+  this.getDogsofBreed();
   
 const newUser = {
   username: this.state.username,
@@ -56,7 +60,8 @@ const newUser = {
   latitude: this.state.latitude,
   longitude: this.state.longitude,
   address: this.state.userAddress,
-  icon: this.state.icon
+  icon: this.state.icon,
+  url: this.state.url
 };
 this.props.signupUser(newUser, this.props.history);
 console.log(newUser);
@@ -77,6 +82,26 @@ getCoordinates(position) {
   })
   this.reverseGeocodeCoordinates();
 }
+
+getDogsofBreed(){
+  console.log("HELP!")
+  fetch(`https://dog.ceo/api/breed/${this.state.icon}/images`)
+  .then(response => response.json())
+    .then(jsondata => { this.setState({ url : jsondata.message[0], error: ""}) 
+    console.log(jsondata)} )
+  //   if (res.status === "error") {
+  //     throw new Error(res.message);
+  //   }
+  //   console.log(res)
+  //   // this.setState({ URL: res.message[0], error: "" });
+
+  // })
+  // this.setState({ URL : jsondata.message[0], error: ""})
+  // .catch(err => this.setState({ error: err.message }));
+  // .catch(error => alert(error))
+}
+
+
 
 reverseGeocodeCoordinates() {
   fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.latitude},${this.state.longitude}&sensor=false&key=` + process.env.REACT_APP_GOOLE_KEY2)
@@ -106,7 +131,7 @@ handleLocationError(error) {
 
 render() {
   const { errors } = this.state;
-
+  
     return (
         <div className="form_bg">
           <div className="container">
@@ -160,6 +185,8 @@ render() {
     )
   }
 }
+
+
 
 SignUp.propTypes = {
   signupUser: PropTypes.func.isRequired,

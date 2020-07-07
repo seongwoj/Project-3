@@ -26,7 +26,7 @@ class LogIn extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
       console.log("Successfully logged in!")
-      this.props.history.push("/dashboard"); //or whatever we decide to call it
+      this.props.history.push("/main"); //or whatever we decide to call it
     }
   
 

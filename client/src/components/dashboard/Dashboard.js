@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import UserMap from "../UserMap"
+import Chatroom from "../Chatroom"
+
 
 
 
@@ -15,9 +17,7 @@ class Dashboard extends Component {
 
   
 render() {
-  console.log(this.props.auth.user.latitude)
-  console.log(this.props.auth.user.longitude)
-  console.log(this.props.auth.user.address)
+  console.log(this.props.auth.user.url)
     const { user } = this.props.auth;
     
 return (
@@ -50,6 +50,7 @@ return (
         
 
         
+
         <UserMap />
       
        
