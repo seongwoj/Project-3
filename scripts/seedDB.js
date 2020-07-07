@@ -47,7 +47,7 @@ const users=[
         email: "johnDog@test.com",
         password: "@@@@@@@@@@",
         latitude: "34.051215",
-        longitude: "118.443305",
+        longitude: "-118.443305",
         address: "Los Angeles, CA, USA",
         icon: "maltese",
         url: "https://images.dog.ceo/breeds/maltese/n02085936_10073.jpg",
