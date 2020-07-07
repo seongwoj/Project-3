@@ -13,9 +13,11 @@ class Dashboard extends Component {
     this.props.logoutUser();
   };
 
+
   
 render() {
     const { user } = this.props.auth;
+    
 return (
       <div style={{ height: "75vh" }} className="container valign-wrapper">
         <div className="row">
