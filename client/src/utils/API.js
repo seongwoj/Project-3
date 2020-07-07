@@ -49,6 +49,9 @@ export default {
       return axios.get("http://www.mapquestapi.com/geocoding/v1/address?key=iJn3fnxq6GVxdR2Czn9tCFjMdpiLFMPf&location="+city)
     },
     
+    getUserLocation: function(){
+      return axios.get("/api/users/users")
+    }
 
 
   };

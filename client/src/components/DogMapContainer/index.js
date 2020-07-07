@@ -52,7 +52,6 @@ const DogMapContainer = withScriptjs(withGoogleMap((props => {
 
 
 
-
       <form className="search-form">
         <input className="city-input" type="text" name="city" onChange={props.handleInputChange} placeholder="Enter city"></input>
         <button className="search-button" onClick={props.handleParkSubmit}>Fetch Dog Parks</button><button className="search-button" onClick={props.handleFriendlySubmit}>Fetch Dog Friendly Places</button>
