@@ -15,6 +15,7 @@ import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import DogMap from "./components/DogMap"
 import UserMap from "./components/UserMap"
+import MainPage from "./components/MainPage"
 
 
 //Check for token to keep user logged in
@@ -43,12 +44,14 @@ class App extends Component {
   return (
     <Provider store={store}>
     <Router>
-    <Route exact path="/fidosearch" component={DogMap}/>
-    <Route exact path="/usersearch" component={UserMap}/>
+    
       <Route exact path={['/','/login']} component={LogIn}/>
       <Route exact path="/signup" component={SignUp}/>
       
       <Switch>
+      <PrivateRoute exact path="/main" component={MainPage} />
+      <PrivateRoute exact path="/fidosearch" component={DogMap}/>
+    <PrivateRoute exact path="/usersearch" component={UserMap}/>
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
       </Switch>
     </Router>

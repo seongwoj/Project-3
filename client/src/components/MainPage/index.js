@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../MainPage/styles.css"
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 // import className from "className";
 
 function MainPage() {
@@ -16,7 +17,9 @@ function MainPage() {
                         <div className="col-md-12">
                         <h1>FidoFriend</h1>
                         <p className="tagline">This is the best application to have fun with your puppies.</p>
+                        <Link to="/dashboard">
                         <button type="button" className="btn btn-info btn-lg" style={{backgroundColor: ""}}>Let's Start</button>
+                        </Link>
                         </div>
                     </div>
                 </div>
@@ -139,4 +142,9 @@ function MainPage() {
     ) 
 }
 
-export default MainPage;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+export default connect(
+  mapStateToProps,
+)(MainPage);
