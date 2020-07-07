@@ -162,14 +162,7 @@ render() {
                     <button onClick={this.getLocation} className="btn" id="locationBtn">Get My Location</button>
                     </div>
                     <div className="form-group">
-                    <input type="latitude" name="" placeholder="Latitude" value={this.state.latitude} id="latitude" readOnly= {true}/>
-                    </div>
-                    <div className="form-group">
-                    <input type="longitude" name="" placeholder="Longitude" value={this.state.longitude} id="longitude" readOnly= {true}/>
-                    </div>
-                    <div className="form-group">
-                    <input className={classnames("", { invalid: errors.address })}  type="address" name="" placeholder="Address" value={this.state.userAddress} error={errors.password} id="address" readOnly= {true}/>
-                    <span className="red-text"><br/>{errors.address}</span>
+                    <input type="address" name="" placeholder="Address" value={this.state.userAddress} id="address" readOnly= {true}/>
                     </div>
                     <br/>
                     <br/>

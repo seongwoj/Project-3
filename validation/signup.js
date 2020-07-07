@@ -6,12 +6,7 @@ module.exports = function validateSignUpInput(data) {
   data.username = !isEmpty(data.username) ? data.username : "";
   data.email = !isEmpty(data.email) ? data.email : "";
   data.password = !isEmpty(data.password) ? data.password : "";
-  data.address = !isEmpty(data.address) ? data.address : "";
 
-// Location checks
-  if (Validator.isEmpty(data.address)) {
-    errors.address = "In order to proceed, please press Get My Location button and confirm that the above location inputs are populated";
-  }
 // Name checks
   if (Validator.isEmpty(data.username)) {
     errors.username = "Name field is required";
