@@ -77,7 +77,7 @@ function DogMap(props){
                 </div>
                 <div className="navbar-header ml-auto">
                     <a className="navbar-brand back-text" href="/dashboard">
-                    Back to Main Page
+                    Go to Users Page
                     </a>
                 </div>
             </div>
