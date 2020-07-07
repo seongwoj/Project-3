@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import Chatroom from "../Chatroom"
-import UserLocation from "../UserLocation";
 
 
 
@@ -46,12 +45,13 @@ return (
         </div>
 
         <a href="/fidosearch" className="btn btn-primary">Find Dog Friendly Places</a>
+        <a href="/usersearch" className="btn btn-primary">Find Dog Friends</a>
 
         
         <img alt="Dog" src={this.props.auth.user.url} className="img-fluid" />
 
-        <Chatroom username={this.props.auth.user.username}/>
-        
+      
+       
       </div>
       
     );

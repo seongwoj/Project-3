@@ -2,16 +2,17 @@ import React, {useState, useEffect} from "react"
 import API from '../../utils/API'
 import DogMapContainer from "../DogMapContainer"
 import "./styles.css"
+import { connect } from "react-redux";
 
 
-function DogMap(){
+function DogMap(props){
     
 
     // states for city inputted and api search
     const[city, setCity]=useState("Los Angeles")
     const[dogSearch, setDogSearch]=useState([])
     const[category, setCategory]=useState("")
-    const[coords, setCoords]=useState({ lat: 34.052235, lng: -118.243683 })
+    const[coords, setCoords]=useState({ lat: parseFloat(props.auth.user.latitude), lng: parseFloat(props.auth.user.longitude) })
 
     
     const handleInputChange=event=>{
@@ -100,4 +101,9 @@ function DogMap(){
 
 }
 
-export default DogMap
+const mapStateToProps = state => ({
+    auth: state.auth
+  });
+  export default connect(
+    mapStateToProps,
+  )(DogMap);
