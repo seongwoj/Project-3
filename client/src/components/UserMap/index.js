@@ -38,6 +38,8 @@ return(
           containerElement={ <div style={{ height: `300px`, width: '100%', marginTop:`2px` }} /> }
           mapElement={ <div style={{ height: `100%` }} /> }
             userInfo={userInfo}
+            latitude={props.auth.user.latitude}
+            longitude={props.auth.user.longitude}
     />
     
     <Chatroom username={props.auth.user.username}/>

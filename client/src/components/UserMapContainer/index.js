@@ -8,12 +8,12 @@ import {withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow}from "react-g
 const UserMapContainer = withScriptjs(withGoogleMap((props => {
 
       const [selectedUser, setSelectedUser]=useState(null)
-
+   
       return(
          <div className="user-map-container">
             
       <GoogleMap
-        center = { { lat: 34.0438134, lng: -118.3924282} }
+        center = { { lat: parseFloat(props.latitude), lng: parseFloat(props.longitude)} }
         defaultZoom = { 12 }
       >
         {props.userInfo&&props.userInfo.map(function(location){
@@ -25,8 +25,6 @@ const UserMapContainer = withScriptjs(withGoogleMap((props => {
             }}
             onClick={()=>{
                 setSelectedUser(location)
-
-
             }}
             />
         })}
@@ -39,18 +37,14 @@ const UserMapContainer = withScriptjs(withGoogleMap((props => {
          onCloseClick={()=>{
             setSelectedUser(null)
          }}>
-            <div className="map-user-container">
-                <h4>Meet Me</h4>
+            <div className="user-container">
                <p>Username: {selectedUser.username}</p>
                <p>Address: {selectedUser.address}</p>
+               <img src={selectedUser.icon}></img>
                <p>Email: {selectedUser.email}</p>
             </div>
          </InfoWindow>
       )}
-
-
-
-
     </GoogleMap>
 
 
