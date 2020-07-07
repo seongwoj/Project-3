@@ -33,7 +33,7 @@ class SignUp extends Component {
 componentDidMount() {
   //If logged in and user navigates to SignUp, should redirect to dashboard
   if (this.props.auth.isAuthenticated) {
-    this.props.history.push("/dashboard");
+    this.props.history.push("/main");
   }
 }
 
