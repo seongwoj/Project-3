@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import Search from "../../components/search"
 import Chatroom from "../Chatroom"
+import UserLocation from "../UserLocation";
 
 
 
@@ -48,8 +49,8 @@ return (
 
         <Search />
 
-            <Chatroom username={this.props.auth.user.username}/>
-
+        <Chatroom username={this.props.auth.user.username}/>
+        
       </div>
       
     );

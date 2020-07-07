@@ -47,7 +47,8 @@ export default {
 
     getCityCoords: function(city){
       return axios.get("http://www.mapquestapi.com/geocoding/v1/address?key=iJn3fnxq6GVxdR2Czn9tCFjMdpiLFMPf&location="+city)
-    }
+    },
+    
 
 
   };
