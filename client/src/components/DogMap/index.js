@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import API from '../../utils/API'
 import DogMapContainer from "../DogMapContainer"
 import "./styles.css"
@@ -8,9 +8,11 @@ function DogMap(){
     
 
     // states for city inputted and api search
-    const[city, setCity]=useState("")
+    const[city, setCity]=useState("Los Angeles")
     const[dogSearch, setDogSearch]=useState([])
     const[category, setCategory]=useState("")
+    const[coords, setCoords]=useState({ lat: 34.052235, lng: -118.243683 })
+
     
     const handleInputChange=event=>{
         const value=event.target.value
@@ -20,33 +22,45 @@ function DogMap(){
     // when submit button is clicked, call API tp get dog parks or deg friendly business
     const handleParkSubmit=event=>{
         event.preventDefault();
-        API.getDogParks(city).then((res) => {
-            setDogSearch(res.data.businesses)
-            setCategory("Dog Park")
-            })
-            .catch((err) => {
-            console.log (err)
-            })
+            API.getCityCoords(city).then((res) => {
+                console.log(res)
+                setCoords({lat: res.data.results[0].locations[0].latLng.lat,
+                lng:res.data.results[0].locations[0].latLng.lng })
+                API.getDogParks(city).then((res) => {
+                    setDogSearch(res.data.businesses)
+                    setCategory("Dog Park")
+                })
+            }).catch((err) => {
+                console.log (err)
+             })
     }
+    
     const handleFriendlySubmit=event=>{
         event.preventDefault();
-        API.getDogFriendly(city).then((res) => {
-            setDogSearch(res.data.businesses)
-            setCategory("Dog Friendly Biz")
+        API.getCityCoords(city).then((res) => {
+            console.log(res)
+            setCoords({lat: res.data.results[0].locations[0].latLng.lat,
+            lng:res.data.results[0].locations[0].latLng.lng })
+                API.getDogFriendly(city).then((res) => {
+                setDogSearch(res.data.businesses)
+                setCategory("Dog Friendly Biz")
             })
-            .catch((err) => {
+        }).catch((err) => {
             console.log (err)
             })
     }
 
     const handleDogBeachSubmit=event=>{
         event.preventDefault();
-        API.getDogBeaches(city).then((res) => {
-            setDogSearch(res.data.businesses)
-            setCategory("Dog Beaches")
-            })
-            .catch((err) => {
-            console.log (err)
+        API.getCityCoords(city).then((res) => {
+            setCoords({lat: res.data.results[0].locations[0].latLng.lat,
+            lng:res.data.results[0].locations[0].latLng.lng })
+                API.getDogBeaches(city).then((res) => {
+                    setDogSearch(res.data.businesses)
+                    setCategory("Dog Beaches")
+                })
+        }).catch((err) => {
+        console.log (err)
             })
     }
     
@@ -78,6 +92,7 @@ function DogMap(){
           handleDogBeachSubmit={handleDogBeachSubmit}
           dogSearch={dogSearch}
           category={category}
+          coords={coords}
         />
         </div>
     )

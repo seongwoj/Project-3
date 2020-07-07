@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import Search from "../../components/search"
 import Chatroom from "../Chatroom"
+import UserLocation from "../UserLocation";
 
 
 
@@ -13,9 +14,11 @@ class Dashboard extends Component {
     this.props.logoutUser();
   };
 
+
   
 render() {
     const { user } = this.props.auth;
+    
 return (
       <div style={{ height: "75vh" }} className="container valign-wrapper">
         <div className="row">
@@ -46,8 +49,8 @@ return (
 
         <Search />
 
-            <Chatroom username={this.props.auth.user.username}/>
-
+        <Chatroom username={this.props.auth.user.username}/>
+        
       </div>
       
     );
