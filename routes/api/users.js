@@ -75,7 +75,9 @@ const username = req.body.username;
           id: user.id,
           username: user.username,
           address: user.address,
-          icon: user.icon
+          icon: user.icon,
+          latitude: user.latitude,
+          longitude: user.longitude
         };
 // Sign token
         jwt.sign(
