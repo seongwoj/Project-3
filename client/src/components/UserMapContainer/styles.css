@@ -1,0 +1,17 @@
+.dog-pic{
+   width:200px;
+   margin-bottom: 10px
+}
+
+.user-container{
+    background-color: #EB6864;
+    padding: 10px;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.username-font{
+    font-size: 22px;
+}

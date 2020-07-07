@@ -16,7 +16,8 @@ const users=[
         latitude: "34.069548",
         longitude: "-118.432573",
         address: "Los Angeles, CA, USA",
-        icon: "doberman",
+        icon: "husky",
+        url: "https://images.dog.ceo/breeds/husky/20180901_150234.jpg",
         date: new Date(Date.now())
     },
     {
@@ -26,7 +27,8 @@ const users=[
         latitude: "34.0495654",
         longitude: "-118.4194040",
         address: "Los Angeles, CA, USA",
-        icon: "chow",
+        icon: "cairn",
+        url: "https://images.dog.ceo/breeds/cairn/n02096177_1000.jpg",
         date: new Date(Date.now())
     },
     {
@@ -36,7 +38,8 @@ const users=[
         latitude: "34.061130",
         longitude: "-118.440042",
         address: "Los Angeles, CA, USA",
-        icon: "chow",
+        icon: "doberman",
+        url: "https://images.dog.ceo/breeds/doberman/doberman.jpg",
         date: new Date(Date.now())
     },
     {
@@ -44,9 +47,10 @@ const users=[
         email: "johnDog@test.com",
         password: "@@@@@@@@@@",
         latitude: "34.051215",
-        longitude: "118.443305",
+        longitude: "-118.443305",
         address: "Los Angeles, CA, USA",
-        icon: "doberman",
+        icon: "maltese",
+        url: "https://images.dog.ceo/breeds/maltese/n02085936_10073.jpg",
         date: new Date(Date.now())
     },
     

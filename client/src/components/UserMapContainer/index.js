@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-
+import "./styles.css"
 
 
 import {withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow}from "react-google-maps"
@@ -38,10 +38,10 @@ const UserMapContainer = withScriptjs(withGoogleMap((props => {
             setSelectedUser(null)
          }}>
             <div className="user-container">
-               <p>Username: {selectedUser.username}</p>
-               <p>Address: {selectedUser.address}</p>
-               <img src={selectedUser.icon}></img>
-               <p>Email: {selectedUser.email}</p>
+               <p className="username-font">{selectedUser.username}</p>
+               <img className="dog-pic" src={selectedUser.url}></img>
+               <p className="address-font">address: {selectedUser.address}</p>
+               <p className="email-font">email: {selectedUser.email}</p>
             </div>
          </InfoWindow>
       )}

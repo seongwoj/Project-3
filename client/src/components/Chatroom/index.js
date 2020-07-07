@@ -83,7 +83,7 @@ function Chatroom(props){
     
   <div className="modal" tabIndex="-1" role="dialog" id="exampleModal">
     <div className="modal-dialog">
-      <div className="modal-content">
+      <div className="modal-content chat-modal">
         <div className="modal-header">
           <h5 className="modal-title">Chatroom</h5>
           <button type="button" className="close" data-dismiss="modal" aria-label="Close">
@@ -96,7 +96,7 @@ function Chatroom(props){
         <div className="modal-footer">
           <form id="send-container">
             <input name="message" type="text" id="message-input" placeholder="type message.." onChange={handleChange}/>
-            <button type="submit" id="send-button"onClick={handleSubmit}>Send</button>
+            <button type="submit" id="chat-send-button"onClick={handleSubmit}>Send</button>
           </form>
         </div>
       </div>
