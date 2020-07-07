@@ -20,3 +20,17 @@
 #message-input{
     width: 380px
 }
+
+#chat-send-button{
+    background-color: #EB6864;
+    color: white;
+    margin-left: 10px;
+    border-radius: 8px
+}
+
+
+.chat-modal{
+    background-color: #EB6864;
+    color: white;
+    border-radius: 10px
+}

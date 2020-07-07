@@ -26,7 +26,7 @@ return(
                     </a>
                 </div>
                 <div className="navbar-header ml-auto">
-                    <a className="navbar-brand back-text" href="/dashboard">
+                    <a className="navbar-brand back-text" href="/main">
                     Back to Main Page
                     </a>
                 </div>
