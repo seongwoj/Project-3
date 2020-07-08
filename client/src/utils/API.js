@@ -9,7 +9,7 @@ export default {
     getDogParks: function(city) {
       return axios.get(URL, {
           headers: {
-            Authorization: "Bearer " + process.env.REACT_APP_YELP_KEY
+            Authorization: "Bearer y0lydZLqJiqXdvL0tGzYauktX0-LbHW2Q9XwdcCnhXrPHa-0Ifg5IxVoj63eyhM_uJz949jeJC2TjuWKhBG08k-NEhhTW0gsQ_Cy3mTwsyU_1nRwf39PlpIjRyD9XnYx" 
         },
           params: {
           term: 'dog park',
@@ -22,7 +22,7 @@ export default {
     getDogFriendly: function(city) {
       return axios.get(URL, {
           headers: {
-            Authorization: "Bearer " + process.env.REACT_APP_YELP_KEY
+            Authorization: "Bearer y0lydZLqJiqXdvL0tGzYauktX0-LbHW2Q9XwdcCnhXrPHa-0Ifg5IxVoj63eyhM_uJz949jeJC2TjuWKhBG08k-NEhhTW0gsQ_Cy3mTwsyU_1nRwf39PlpIjRyD9XnYx" 
         },
           params: {
           term: 'dog allowed',
@@ -35,7 +35,7 @@ export default {
     getDogBeaches: function(city) {
       return axios.get(URL, {
           headers: {
-            Authorization: "Bearer " + process.env.REACT_APP_YELP_KEY
+            Authorization: "Bearer y0lydZLqJiqXdvL0tGzYauktX0-LbHW2Q9XwdcCnhXrPHa-0Ifg5IxVoj63eyhM_uJz949jeJC2TjuWKhBG08k-NEhhTW0gsQ_Cy3mTwsyU_1nRwf39PlpIjRyD9XnYx"
         },
           params: {
           term: 'dog beaches',

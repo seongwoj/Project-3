@@ -3,11 +3,12 @@ import API from '../../utils/API'
 import DogMapContainer from "../DogMapContainer"
 import "./styles.css"
 import { connect } from "react-redux";
+import { Link, useLocation } from "react-router-dom"
 
 
 function DogMap(props){
     
-
+    const location = useLocation();
     // states for city inputted and api search
     const[city, setCity]=useState("Los Angeles")
     const[dogSearch, setDogSearch]=useState([])
@@ -71,19 +72,19 @@ function DogMap(props){
         <nav className="navbar navbar-default navbar-fidosearch">
             <div className="container-fluid">
                 <div className="navbar-header">
-                    <a className="navbar-brand logo-text" href="/fidosearch">
-                    Fido Search
-                    </a>
+                <Link to="/fidosearch" id="fido-search" className={location.pathname === "/portfolio" ? "nav-link active" : "nav-link"}>
+                FidoSearch
+              </Link>
                 </div>
                 <div className="navbar-header ml-auto">
-                    <a className="navbar-brand back-text" href="/dashboard">
-                    Go to Users Page
-                    </a>
+                <Link to="/dashboard" id="back-to-users" className={location.pathname === "/board" ? "nav-link active" : "nav-link"}>
+                Back to Users Page
+              </Link>
                 </div>
             </div>
         </nav>
         <DogMapContainer
-          googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_KEY}`}
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyAJ67XPqFCkQROFj98MvLbeDMnxkKsCWpM`}
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={ <div style={{ height: `300px`, width: '100%', marginTop:`2px` }} /> }
           mapElement={ <div style={{ height: `100%` }} /> }
