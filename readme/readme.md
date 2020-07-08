@@ -51,7 +51,9 @@ Alex Jeong - https://github.com/seongwoj
 
 JC Mastropieri - https://github.com/jcmastropieri
 
-Bill Grundler - 
+
+William Grundler - https://github.com/wrg93
+
 
 Oleksandr Prykotenko - https://github.com/prikat
 
