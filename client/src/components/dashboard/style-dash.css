@@ -1,0 +1,65 @@
+.jumbotron {
+    text-align: center;
+    background-image: url(https://images.pexels.com/photos/122429/leaf-nature-green-spring-122429.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+    background-size: cover;
+    border-radius: 0;
+    margin: 0;
+}
+
+h1 {
+    font-family: 'Marck Script', cursive;
+    color: whitesmoke;
+    text-shadow: 0 1px 0 #ccc, 
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px crimson,
+               0 0 5px crimson,
+               0 1px 3px crimson,
+               0 3px 5px crimson,
+               0 5px 10px crimson,
+               0 10px 10px crimson,
+               0 20px 20px crimson;
+               
+}
+
+p span {
+    color: crimson;
+    font-family: 'Monoton', cursive;
+    font-weight: bold;
+}
+p .lead{
+    color: whitesmoke;
+    font-weight: bolder;
+}
+
+h2 {
+    color: whitesmoke;
+    font-family: 'Marck Script', cursive;
+    
+}
+
+.btn {
+    padding: 1px;
+    width: 100px;
+    border: none;
+    background-color: #1c92d2;
+    box-shadow:  
+    /* 0 2px 0 #c9c9c9,
+    0 3px 0 #bbb,
+    0 4px 0 #b9b9b9,
+    0 5px 0 #aaa, */
+    0 6px 1px #0052D4,
+    0 0 5px #0052D4,
+    0 1px 3px #0052D4,
+    0 3px 5px #0052D4,
+    0 5px 10px #0052D4,
+    0 10px 10px #0052D4,
+    0 20px 20px #0052D4;;
+}
+
+.btn:hover {
+    background-color: whitesmoke;
+    color:#1c92d2 ;
+}
