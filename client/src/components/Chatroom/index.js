@@ -102,9 +102,9 @@ function Chatroom(props){
       </div>
     </div>
   </div>
-  <div className="card online-users">
-  <div className="card-body ">
-    <h2 className="chat-heading">Chat with Dog Owners</h2>
+  <div className="card online-users"style={{width: "100%", border: "none"}}>
+  <div className="card-body" >
+    <h2 className="chat-heading" id="chat-title">Chat with Dog Owners</h2>
     {renderUsers()}
   </div>
 </div>

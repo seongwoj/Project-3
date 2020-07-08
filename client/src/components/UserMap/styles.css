@@ -5,3 +5,74 @@
 #dog-owners-title{
     color:white
 }
+
+.navbar {
+    background:linear-gradient(to right, #d53369, #cbad6d, #d53369) ;
+}
+
+#map-map-map{
+	position: relative;
+}
+#map-map-map:before{
+	position: absolute;
+	content: "";
+	z-index: -1;
+	bottom: 15px;
+	left: 8px;
+	top: 80%;
+	width: 50%;
+	background: #777;
+	-webkit-box-shadow: 0 18px 15px #486685;
+	-moz-box-shadow: 0 18px 15px #486685;
+	box-shadow: 0 18px 15px #486685;
+	-webkit-transform: rotate(-2deg);
+	-moz-transform: rotate(-2deg);
+	-o-transform: rotate(-2deg);
+	-ms-transform: rotate(-2deg);
+	transform: rotate(-2deg);
+}
+#map-map-map:after{
+	position: absolute;
+	content: "";
+	z-index: -1;
+	bottom: 15px;
+	right: 8px;
+	top: 80%;
+	width: 50%;
+	background: #777;
+	-webkit-box-shadow: 0 18px 15px #486685;
+	-moz-box-shadow: 0 18px 15px #486685;
+	box-shadow: 0 18px 15px #486685;
+	-webkit-transform: rotate(2deg);
+	-moz-transform: rotate(2deg);
+	-o-transform: rotate(2deg);
+	-ms-transform: rotate(2deg);
+	transform: rotate(2deg);
+}
+
+#chat {
+    text-align: center;
+    justify-content: center;
+    /* margin-left: 10px;
+    margin-right: 10px; */
+    padding: 0;
+    width: 100%;
+}
+
+
+
+
+#middle {
+    background: linear-gradient(to right, #d53369, #cbad6d, #d53369 );
+    text-align: center;
+    padding-top: 50px;
+    
+}
+
+#find  {
+	align-items: center;
+	background: linear-gradient(to right,#8e9eab, #eef2f3,#8e9eab );
+	text-align: center;
+	padding-bottom: 10px;
+}
+
