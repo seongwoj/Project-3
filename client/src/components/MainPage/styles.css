@@ -6,6 +6,19 @@
     background-size: cover;
     /* padding-top: 150px; */
 }
+
+#titles {
+  color: rgb(109, 72, 72);
+}
+
+.main-page-title {
+  font-family: 'Monoton', cursive;
+}
+
+.main-page-title span {
+  color: crimson;
+}
+
 #william {
   background-image: url(/client/src/components/MainPage/img/icon1.png);
 }

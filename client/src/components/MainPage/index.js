@@ -15,8 +15,8 @@ function MainPage() {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
-                        <h1>FidoFriend</h1>
-                        <p className="tagline">This is the best application to have fun with your puppies.</p>
+                        <h1 className="main-page-title"><span>F</span>ido<span>F</span>riend</h1>
+                        <br/>
                         <Link to="/dashboard">
                         <button type="button" className="btn btn-info btn-lg" style={{backgroundColor: ""}}>Let's Start</button>
                         </Link>
@@ -37,13 +37,14 @@ function MainPage() {
         </nav>
 
         <section className="about" id="about">
-            <h2>About</h2>
+            <h2 id="titles">About</h2>
             <span><img src="https://cdn0.iconfinder.com/data/icons/database-and-storage-4/70/info__faq__about__switch_-256.png" style={{width: "40px"}} alt=""/></span>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque illum commodi libero nam quod, provident, ipsam nostrum fuga quas necessitatibus in explicabo delectus fugit quos? Distinctio nesciunt quo maiores similique?</p>
        </section>
 
        <section className="features" id="features" style={{textAlign: "center"}}>
             <div className="col-md-12 col-xs-12">
+               <h2 id="titles">Features</h2>
                <span><img src="https://cdn2.iconfinder.com/data/icons/jetflat-multimedia/90/004_009_mail_email_envelope_message-256.png" style={{width: "40px"}} alt=""/></span>
                <p>Users can communicate with each other through our chat-box feature.</p>
                <br/>
@@ -60,7 +61,7 @@ function MainPage() {
        </section>
         
         <div className="teammates" id="team">
-           <h2>Meet our Developers</h2>
+           <h2 id="titles" >Meet our Developers</h2>
            <br/>
 
                 William <a href="https://github.com/wrg93" target="_blank"><span><img id="william" src="https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/7_avatar-256.png" style={{width:"40px"}} alt=""/></span></a>
@@ -75,7 +76,9 @@ function MainPage() {
     <div className="container">
       <div className="row">
         <div className="col-md-12 text-center">
-          <h2 className="section-title">Contact Us</h2>
+        <br/>
+          <h2 id="titles" className="section-title">Contact Us</h2>
+          <br/>
         </div>
       </div>
 
