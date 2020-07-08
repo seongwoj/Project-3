@@ -19,8 +19,21 @@
 
 #fido-search{
     color: white;
+    font-family: 'Monoton', cursive;
+    font-weight: 500;
+    color: white;
 }
 
 #back-to-users{
     color: white
+}
+
+#fido-search span {
+    color: black;
+    font-weight: 600;
+}
+
+#h3 {
+    color: white;
+    font-weight: 500;
 }

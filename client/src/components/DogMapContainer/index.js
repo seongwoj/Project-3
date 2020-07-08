@@ -48,16 +48,25 @@ const DogMapContainer = withScriptjs(withGoogleMap((props => {
          </InfoWindow>
       )}
          </GoogleMap>
+         <br/>
 
 
-
-
-      <form className="search-form">
-        <input className="city-input" type="text" name="city" onChange={props.handleInputChange} placeholder="Enter city here first before searching"></input>
-        <button className="search-button" onClick={props.handleParkSubmit}>Fetch Dog Parks</button><button className="search-button" onClick={props.handleFriendlySubmit}>Fetch Dog Friendly Places</button>
-        <button className="search-button" onClick={props.handleDogBeachSubmit}>Fetch Dog Beaches</button>
-      </form>
+   <div className="row">
       
+         <div class="col-md-4 col-xs-12" style={{textAlign: "center"}}>
+        <input className="city-input" type="text" name="city" onChange={props.handleInputChange} placeholder="Enter city here first before searching"></input>
+        </div>
+        <div className="col-md-2 col-xs-12" style={{textAlign: "center"}}>
+        <button className="search-button" onClick={props.handleParkSubmit}>Fetch Dog Parks</button>
+        </div>
+        <div className="col-md-4 col-xs-12" style={{textAlign: "center"}}>
+        <button className="search-button" onClick={props.handleFriendlySubmit}>Fetch Dog Friendly Places</button>
+        </div>
+        <div className="col-md-2 col-xs-12" style={{textAlign: "center"}}>
+        <button className="search-button" onClick={props.handleDogBeachSubmit}>Fetch Dog Beaches</button>
+        </div>
+      
+   </div>   
       {selectedPlace.map(function(place){
        return (<div key={place.id}>
                <h3 className="category">{props.category}</h3>
@@ -68,7 +77,7 @@ const DogMapContainer = withScriptjs(withGoogleMap((props => {
                      <img className="placeImage" src={place.image_url} alt={place.name}/>
                      <p>{place.location.display_address[0]} </p>
                      <p>{place.location.display_address[1]}</p>
-                     <a href={place.url} className="btn view-yelp" rel="noopener noreferrer">View On Yelp</a>
+                     <a href={place.url} className="btn view-yelp" rel="noopener noreferrer" target="_blank">View On Yelp</a>
                   </div>
                </div>
             </div>

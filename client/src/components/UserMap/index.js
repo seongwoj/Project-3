@@ -24,7 +24,7 @@ return(
             <div className="container-fluid">
                 <div className="navbar-header">
                 
-                <h3 id="dog-owners-title">Dog Owners</h3>
+                <h3 id="dog-owners-title"><span>D</span>og <span>O</span>wners</h3>
              
                 </div>
                 <div className="navbar-header ml-auto">

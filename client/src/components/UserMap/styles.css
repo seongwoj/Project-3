@@ -3,7 +3,14 @@
 }
 
 #dog-owners-title{
-    color:white
+    color: white;
+    font-family: 'Monoton', cursive;
+    font-weight: 500;
+    color: white;
+}
+#dog-owners-title span {
+    color: black;
+    font-weight: 600;
 }
 
 .navbar {

@@ -73,7 +73,7 @@ function DogMap(props){
             <div className="container-fluid">
                 <div className="navbar-header">
                 <Link to="/fidosearch" id="fido-search" className={location.pathname === "/portfolio" ? "nav-link active" : "nav-link"}>
-                FidoSearch
+                <h3 id="h3"><span>F</span>ido<span>S</span>earch</h3>
               </Link>
                 </div>
                 <div className="navbar-header ml-auto">
@@ -86,7 +86,7 @@ function DogMap(props){
         <DogMapContainer
           googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyAJ67XPqFCkQROFj98MvLbeDMnxkKsCWpM`}
           loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={ <div style={{ height: `300px`, width: '100%', marginTop:`2px` }} /> }
+          containerElement={ <div id="map-map-map" style={{ height: `300px`, width: '100%' }} /> }
           mapElement={ <div style={{ height: `100%` }} /> }
           handleInputChange={handleInputChange}
           handleParkSubmit={handleParkSubmit}
