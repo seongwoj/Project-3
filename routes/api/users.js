@@ -9,6 +9,7 @@ const validateSignUpInput = require("../../validation/signup");
 const validateLoginInput = require("../../validation/login");
 // Load User model
 const User = require("../../models/user");
+const Message = require("../../models/Message");
 
 
 router.get("/users", (req, res)=>{
@@ -57,6 +58,19 @@ User.findOne({ email: req.body.email }).then(user => {
     }
   });
 });
+
+router.post('/messages', (req, res) => {
+  const messageToPost = new Message({ 
+    name: req.body.name,
+    email: req.body.email,
+  subject: req.body.subject,
+  message: req.body.message,
+  
+  }); 
+  messageToPost.save() 
+    .then(item => 
+      res.json(item)) 
+})
 
 // @route POST api/users/login
 // @desc Login user and return JWT token
