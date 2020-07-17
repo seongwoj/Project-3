@@ -47,7 +47,6 @@ const userslist={}
 
 io.on('connection',function(socket){
   socket.on('new-user', function(name){
-    
     const user={
       username: name,
       id:socket.id
@@ -57,9 +56,9 @@ io.on('connection',function(socket){
     io.emit("users", Object.values(userslist));
   })
 
-  socket.on('message', message => {
-    io.emit('render-message', {message:message, name:userslist[socket.id]
-    });
+  socket.on('message', chatInfo => {
+    console.log(chatInfo)
+    io.to(chatInfo.to).emit('render-message', chatInfo.msg);
   });
 
  
