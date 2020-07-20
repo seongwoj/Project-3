@@ -1,11 +1,39 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import "../MainPage/styles.css"
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import API from "../../utils/messageAPI"
+import Notification from "../../components/Notification/Notification"
 // import className from "className";
 
 function MainPage() {
+
+  const [formObject, setFormObject] = useState({})
+    const [notificationState, setNotificationState] = useState(null)
+
+    function handleInputChange(event) {
+        const name = event.target.name
+        const value = event.target.value
+        setFormObject({...formObject, [name]:value})
+    }
+
+    function handleFormSubmit(event){
+        event.preventDefault();
+
+        setNotificationState(true)
+        setTimeout(() => {
+            setNotificationState(null);
+        }, 3000);
+
+        API.saveMessage({
+            name: formObject.name,
+            email: formObject.email,
+            message: formObject.message
+        }).then(res => console.log("success"))
+        .catch(err => console.log(err));
+        document.getElementById("form").reset()
+    }
     return (
         // Parent div start
         <div> 
@@ -105,24 +133,25 @@ function MainPage() {
 
         <div className="col-lg-5 col-md-8">
           <div className="form">
-            <form action="forms/contact.php" method="post" role="form" className="php-email-form">
+            <form action="forms/contact.php" method="post" role="form" className="php-email-form" id="form">
               <div className="form-group">
-                <input type="text" name="name" className="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                <input type="text" name="name" className="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" onChange={handleInputChange} />
                 <div className="validate"></div>
               </div>
               <div className="form-group">
-                <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" onChange={handleInputChange} />
                 <div className="validate"></div>
               </div>
               <div className="form-group">
-                <input type="text" className="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                <input type="text" className="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" onChange={handleInputChange} />
                 <div className="validate"></div>
               </div>
               <div className="form-group">
-                <textarea className="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                <textarea className="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message" onChange={handleInputChange}></textarea>
                 <div className="validate"></div>
               </div>
-              <div className="text-center"><button type="button" className="btn btn-primary">Send Message</button></div>
+              <div className="text-center"><button type="button" className="btn btn-primary" onClick={handleFormSubmit}>Send Message</button>
+              {notificationState ? <Notification />: null}</div>
             </form>
           </div>
         </div>
@@ -147,6 +176,7 @@ function MainPage() {
 
 const mapStateToProps = state => ({
   auth: state.auth
+  
 });
 export default connect(
   mapStateToProps,

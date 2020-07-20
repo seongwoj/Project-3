@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const User = require("../models/user")
+const Message = require("../models/Message")
 
 // This file empties the Books collection and inserts the books below
 
@@ -60,6 +61,28 @@ const users=[
 User
   .remove({})
   .then(() => User.collection.insertMany(users))
+  .then(data => {
+    console.log(data.result.n + " records inserted!");
+    process.exit(0);
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
+
+  const messages=[
+    {
+        name: "Bill",
+        email: "bill@bill.com",
+        subject: "Hello",
+        message: "hello world",
+        date: new Date(Date.now())
+    }
+  ]
+
+  Message
+  .remove({})
+  .then(() => Message.collection.insertMany(messages))
   .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
