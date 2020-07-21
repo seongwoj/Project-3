@@ -6,7 +6,7 @@ console.log(props.alertState)
     if (props.alertState===true){
     return (
         <div className="alert alert-danger" role="alert">
-            Invalid input: Enter a city in the search field, then try again
+            Invalid input: Enter a city in the search field then try again
         </div>
     )
     }else{

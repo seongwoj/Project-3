@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../MainPage/styles.css"
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import API from "../../utils/messageAPI"

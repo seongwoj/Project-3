@@ -39,7 +39,7 @@ const UserMapContainer = withScriptjs(withGoogleMap((props => {
          }}>
             <div className="user-container">
                <p className="username-font">{selectedUser.username}</p>
-               <img className="dog-pic" src={selectedUser.url}></img>
+               <img className="dog-pic" src={selectedUser.url} alt="dog"></img>
                <p className="address-font">address: {selectedUser.address}</p>
                <p className="email-font">email: {selectedUser.email}</p>
             </div>

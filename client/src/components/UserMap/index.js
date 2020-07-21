@@ -50,12 +50,12 @@ return(
                 <Chatroom username={props.auth.user.username}/>
             </div>
             <div className="col-md-6 col-xs-12" id="middle">
-                <h2>You have an options to chat with your Fido friends and to find "Pets-friendly" places.</h2>
+                <h2>You can chat with your Fido friends and find "Dog-friendly" places.</h2>
             </div>
             <div className="col-md-3 col-xs-12"  id="find">
                 <br/>
                 
-                <Link to="/fidosearch" id="find-friendly-button" className="btn btn-primary" id="search-places">Friendly Places</Link>
+                <Link to="/fidosearch" id="find-friendly-button" className="btn btn-primary">Friendly Places</Link>
             </div>
             
         </div>
