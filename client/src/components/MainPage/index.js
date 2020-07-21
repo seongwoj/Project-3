@@ -5,9 +5,10 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import API from "../../utils/messageAPI"
 import Notification from "../../components/Notification/Notification"
+import { logoutUser } from "../../actions/authActions";
 // import className from "className";
 
-function MainPage() {
+function MainPage(props) {
 
   const [formObject, setFormObject] = useState({})
     const [notificationState, setNotificationState] = useState(null)
@@ -34,6 +35,12 @@ function MainPage() {
         .catch(err => console.log(err));
         document.getElementById("form").reset()
     }
+
+    const onLogoutClick = e => {
+      e.preventDefault();
+      props.logoutUser();
+    };
+
     return (
         // Parent div start
         <div> 
@@ -61,6 +68,7 @@ function MainPage() {
                 <li><a href="#features">Features</a></li>
                 <li><a href="#team">Team</a></li> 
                 <li><a href="#contact">Contact Us</a></li>
+                <li><a onClick={onLogoutClick} href="#logout">Logout</a></li>
             </ul>
         </nav>
 
@@ -180,4 +188,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
+  { logoutUser }
 )(MainPage);
