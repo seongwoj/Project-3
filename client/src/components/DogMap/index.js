@@ -10,11 +10,11 @@ function DogMap(props){
     
     const location = useLocation();
     // states for city inputted and api search
-    const[city, setCity]=useState("Los Angeles")
+    const[city, setCity]=useState("")
     const[dogSearch, setDogSearch]=useState([])
     const[category, setCategory]=useState("")
     const[coords, setCoords]=useState({ lat: parseFloat(props.auth.user.latitude), lng: parseFloat(props.auth.user.longitude) })
-
+    const [alertState, setAlertState]=useState(null)
     
     const handleInputChange=event=>{
         const value=event.target.value
@@ -24,8 +24,13 @@ function DogMap(props){
     // when submit button is clicked, call API tp get dog parks or deg friendly business
     const handleParkSubmit=event=>{
         event.preventDefault();
+            if(city===""){
+                setAlertState(true)
+                setTimeout(()=>{
+                    setAlertState(null);
+                }, 6000);
+            }else{
             API.getCityCoords(city).then((res) => {
-                console.log(res)
                 setCoords({lat: res.data.results[0].locations[0].latLng.lat,
                 lng:res.data.results[0].locations[0].latLng.lng })
                 API.getDogParks(city).then((res) => {
@@ -35,10 +40,16 @@ function DogMap(props){
             }).catch((err) => {
                 console.log (err)
              })
+            }
     }
-    
     const handleFriendlySubmit=event=>{
         event.preventDefault();
+        if(city===""){
+            setAlertState(true)
+            setTimeout(()=>{
+                setAlertState(null);
+            }, 6000);
+        }else{
         API.getCityCoords(city).then((res) => {
             console.log(res)
             setCoords({lat: res.data.results[0].locations[0].latLng.lat,
@@ -50,10 +61,17 @@ function DogMap(props){
         }).catch((err) => {
             console.log (err)
             })
+        }   
     }
 
     const handleDogBeachSubmit=event=>{
         event.preventDefault();
+        if(city===""){
+            setAlertState(true)
+            setTimeout(()=>{
+                setAlertState(null);
+            }, 6000);
+        }else{
         API.getCityCoords(city).then((res) => {
             setCoords({lat: res.data.results[0].locations[0].latLng.lat,
             lng:res.data.results[0].locations[0].latLng.lng })
@@ -64,6 +82,7 @@ function DogMap(props){
         }).catch((err) => {
         console.log (err)
             })
+        }
     }
     
     // google map styling and props for submit buttons and state
@@ -95,6 +114,7 @@ function DogMap(props){
           dogSearch={dogSearch}
           category={category}
           coords={coords}
+          alertState={alertState}
         />
         </div>
     )

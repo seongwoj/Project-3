@@ -37,3 +37,8 @@
     color: white;
     font-weight: 500;
 }
+
+.city-input{
+    border-radius: 8px;
+    margin-bottom: 0px;
+}
