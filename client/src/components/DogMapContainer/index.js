@@ -1,4 +1,5 @@
 import React, {useState} from "react"
+import Cityalert from "../Cityalert"
 import "./styles.css"
 
 
@@ -9,7 +10,8 @@ const DogMapContainer = withScriptjs(withGoogleMap((props => {
       const dogSearch=props.dogSearch
       const [selectedMap, setSelectedMap] = useState(null);
       const [selectedPlace, setSelectedPlace] = useState([]);
-      console.log(props.location)
+      
+      
       return(
          <div className="dog-map-container">
             
@@ -53,14 +55,16 @@ const DogMapContainer = withScriptjs(withGoogleMap((props => {
 
    <div className="row">
       
-         <div class="col-md-4 col-xs-12" style={{textAlign: "center"}}>
+        <div class="col-md-4 col-xs-12" style={{textAlign: "center"}}>
         <input className="city-input" type="text" name="city" onChange={props.handleInputChange} placeholder="Enter city here first before searching"></input>
+        {props.alertState?<Cityalert alertState={props.alertState} />:null}
         </div>
         <div className="col-md-2 col-xs-12" style={{textAlign: "center"}}>
         <button className="search-button" onClick={props.handleParkSubmit}>Fetch Dog Parks</button>
         </div>
         <div className="col-md-4 col-xs-12" style={{textAlign: "center"}}>
         <button className="search-button" onClick={props.handleFriendlySubmit}>Fetch Dog Friendly Places</button>
+        
         </div>
         <div className="col-md-2 col-xs-12" style={{textAlign: "center"}}>
         <button className="search-button" onClick={props.handleDogBeachSubmit}>Fetch Dog Beaches</button>
