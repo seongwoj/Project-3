@@ -74,7 +74,8 @@ function MainPage(props) {
         <section className="about" id="about">
             <h2 id="titles">About</h2>
             <span><img src="https://cdn0.iconfinder.com/data/icons/database-and-storage-4/70/info__faq__about__switch_-256.png" style={{width: "40px"}} alt=""/></span>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque illum commodi libero nam quod, provident, ipsam nostrum fuga quas necessitatibus in explicabo delectus fugit quos? Distinctio nesciunt quo maiores similique?</p>
+            <p>We all know dogs are man’s best friend. At FidoFriend we believe the friends of dogs have a proclivity to get along too. Unfortunately, we often don’t get to know our neighboring canine companions. That’s why it is our goal at FidoFriend to facilitate the growth of the online dog community.</p><p>
+	On our site you’ll be able to connect with dog owners near you, chat in real time, and search for dog friendly establishments. Be sure to check back in regularly as we continue to add features which allow you to further connect and exchange favors with the dog-loving community. Please connect with us and let us know how we may better be a friend to you!</p>
        </section>
 
        <section className="features" id="features" style={{textAlign: "center"}}>
